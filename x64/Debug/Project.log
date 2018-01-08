@@ -1,0 +1,11 @@
+﻿  Space.cpp
+c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Predator.cpp
+c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Player.cpp
+c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  ManagedSprite.cpp
+c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  game.cpp
+c:\users\pixir\desktop\college stuff\holder\src\game.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...
