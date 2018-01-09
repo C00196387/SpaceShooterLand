@@ -1,11 +1,11 @@
-﻿  Space.cpp
-c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  Predator.cpp
-c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  Player.cpp
-c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  ManagedSprite.cpp
-c:\users\pixir\desktop\college stuff\holder\include\stdafx.h(5): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  game.cpp
-c:\users\pixir\desktop\college stuff\holder\src\game.cpp(1): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+﻿  game.cpp
+c:\users\jocon\desktop\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(148): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\spaceshooterland\src\game.cpp(22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating Code...
+  Skipping... (no relevant changes detected)
+  Worker.cpp
+  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.exe
+  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.pdb (Partial PDB)

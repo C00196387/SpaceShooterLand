@@ -17,6 +17,7 @@ Space::Space(std::vector<ManagedSprite*>* sprite, int x, int y)
 
 void Space::Update(sf::Time t)
 {
+
 }
 
 void Space::Draw(sf::RenderWindow & r)

@@ -82,10 +82,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../SFML-2.4.2\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../SFML-2.4.2\include;./SFML-2.4.2\include;$(SolutionDir)\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>../SFML-2.4.2\lib;$(SolutionDir)\src</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>./SFML-2.4.2\lib;../SFML-2.4.2\lib;$(SolutionDir)\src</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -125,6 +125,7 @@
     <ClInclude Include="include\Space.h" />
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\Structure.h" />
+    <ClInclude Include="include\Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Predator.cpp" />
     <ClCompile Include="src\Space.cpp" />
+    <ClCompile Include="src\Worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

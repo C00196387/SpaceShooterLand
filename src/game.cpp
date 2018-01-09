@@ -7,6 +7,7 @@
 #include "Predator.h"
 #include "Space.h"
 #include "Graph.h"
+#include "Worker.h"
 
 int main()
 {
@@ -26,6 +27,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\Space2.png", "space2");
 	Resources.LoadTexture(".\\resources\\Space3.png", "space3");
 	Resources.LoadTexture(".\\resources\\Predator.png", "predator");
+	Resources.LoadTexture(".\\resources\\Worker.png", "worker");
 
 	Player p = Player(&Resources, mainCamera, 50, 50);
 
@@ -61,7 +63,7 @@ int main()
 	solidMap->GenerateGraph();
 
 	Predator pr = Predator(&Resources, solidMap, 100, 100);
-
+	Worker wr = Worker(&Resources, solidMap, 50, 100);
 	//FPS stuff
 	sf::Clock clock;
 	const float FPS = 60.0f;
@@ -91,7 +93,7 @@ int main()
 
 			p.Update(timeSinceLastUpdate);
 			pr.Update(timeSinceLastUpdate);
-
+			wr.Update(timeSinceLastUpdate);
 			//No More
 
 			window->clear();
@@ -107,7 +109,7 @@ int main()
 
 			p.Draw(*window);
 			pr.Draw(*window);
-
+			wr.Draw(*window);
 			//No More
 			window->display();
 
