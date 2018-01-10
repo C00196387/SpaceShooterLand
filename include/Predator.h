@@ -34,7 +34,6 @@ private:
 	std::vector<Entity*> m_formation;
 
 	Graph * m_graph;
-	std::vector<Node> m_path;
 
 	int m_pathRenewTimer;
 

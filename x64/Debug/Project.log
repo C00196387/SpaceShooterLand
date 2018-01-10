@@ -1,9 +1,22 @@
-﻿  game.cpp
-c:\users\jocon\desktop\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\jocon\desktop\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\jocon\desktop\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\jocon\desktop\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\jocon\desktop\spaceshooterland\src\game.cpp(22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  LINK : C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
-  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.exe
-  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.pdb (Partial PDB)
+﻿  Predator.cpp
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(117): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(124): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(143): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(148): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(149): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(167): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(182): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.exe
+  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.pdb (Partial PDB)
