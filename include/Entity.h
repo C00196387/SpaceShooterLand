@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "ResourceManager.h"
+#include "Graph.h"
 #include "ManagedSprite.h"
 
 //All moving objects
@@ -20,6 +21,7 @@ public:
 	bool m_leader = false;
 	bool m_isSlave = false;
 	Entity* m_master;
+	std::vector<Node> m_path;
 	sf::Vector2f m_position;
 	sf::Vector2f m_velocity;
 	std::string m_type;

@@ -45,16 +45,12 @@ void Predator::Update(sf::Time t)
 					m_path = m_graph->Path((int)(m_entity->at(i)->Position().x / 32), (int)(m_entity->at(i)->Position().y / 32), (int)(m_position.x / 32), (int)(m_position.y / 32));
 					m_seekingPlayer = false;
 				}
-				else
-				{
-					m_seekingPlayer = true;
-				}
 			}
 			else if (m_entity->at(i)->Type() == "Predator" && m_entity->at(i) != this)
 			{
 				if (DistanceFormula(m_entity->at(i)->Position(), m_position) < 160)
 				{
-					if (!m_entity->at(i)->m_isSlave && !m_entity->at(i)->m_leader)
+					if (!m_entity->at(i)->m_isSlave && !m_entity->at(i)->m_leader && m_formation.size() < 3)
 					{
 						m_leader = true;
 						m_formation.push_back(m_entity->at(i));
@@ -73,36 +69,70 @@ void Predator::Update(sf::Time t)
 		m_pathRenewTimer--;
 	}
 
-	if (m_seekingPlayer)
+	if (m_leader)
 	{
+		int playerIndex = -1;
+		bool attackPlayer = false;
 		for (int i = 0; i < m_entity->size(); i++)
 		{
 			if (m_entity->at(i)->Type() == "Player")
 			{
-				m_path.clear();
-				m_path.push_back(Node(m_entity->at(i)->Position().x / 32, m_entity->at(i)->Position().y / 32, false));
+				playerIndex = i;
+				if (DistanceFormula(m_entity->at(i)->Position(), m_position) < 32 * 5)
+				{
+					attackPlayer = true;
+					break;
+				}
+			}
+		}
+		if (attackPlayer)
+		{
+			m_path.clear();
+			m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32) - 2, (m_entity->at(playerIndex)->Position().y / 32), false));
+			bool slaveOne = false;
+			bool slaveTwo = false;
+			for (int i = 0; i < m_formation.size(); i++)
+			{
+				m_formation.at(i)->m_path.clear();
+				if (!slaveOne)
+				{
+					m_formation.at(i)->m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32) + 2, m_entity->at(playerIndex)->Position().y / 32, false));
+					slaveOne = true;
+				}
+				else if (!slaveTwo)
+				{
+					m_formation.at(i)->m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32), (m_entity->at(playerIndex)->Position().y / 32) + 2, false));
+					slaveTwo = true;
+				}
+				else
+				{
+					m_formation.at(i)->m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32), (m_entity->at(playerIndex)->Position().y / 32)-2, false));
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < m_formation.size(); i++)
+			{
+				m_formation.at(i)->m_path.push_back(Node((m_position.x / 32), (m_position.y / 32), false));
 			}
 		}
 	}
 
-	if (m_isSlave)
+	if (m_path.size() > 0)
 	{
-		m_path.clear();
-		m_path.push_back(Node(m_master->Position().x / 32, m_master->Position().y / 32, false));
-	}
+		sf::Rect<int> holderThis = sf::Rect<int>(m_position.x, m_position.y, 32, 32);
+		sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32) - 8, (m_path.back().y * 32) - 8, 48, 48);
 
-	sf::Rect<int> holderThis = sf::Rect<int>(m_position.x, m_position.y, 32, 32);
-	sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32) - 8, (m_path.back().y * 32) - 8, 48, 48);
-
-	if (holderThis.intersects(holderOther))
-	{
-		if (m_path.size() > 1)
+		if (holderThis.intersects(holderOther))
 		{
-			m_path.pop_back();
+			if (m_path.size() > 1)
+			{
+				m_path.pop_back();
+			}
 		}
+		Pursue(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
 	}
-
-	Pursue(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
 
 	for (int i = 0; i < m_entity->size(); i++)
 	{
