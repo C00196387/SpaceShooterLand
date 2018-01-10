@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "Player.h"
 #include "Predator.h"
+#include "Worker.h"
 #include "Space.h"
 #include "Graph.h"
 
@@ -26,6 +27,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\Space2.png", "space2");
 	Resources.LoadTexture(".\\resources\\Space3.png", "space3");
 	Resources.LoadTexture(".\\resources\\Predator.png", "predator");
+	Resources.LoadTexture(".\\resources\\Worker.png", "worker");
 
 	std::vector<ManagedSprite*> spaceTiles;
 	spaceTiles.push_back(new ManagedSprite(Resources.GetTexture("space1"), 16, 16));
@@ -65,7 +67,7 @@ int main()
 	entity->push_back(new Predator(&Resources, entity, solidMap, 280, 270));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 210, 250));
-
+	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
 	std::cout << entity->size() << std::endl;
 
 	//FPS stuff

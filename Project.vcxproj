@@ -125,6 +125,7 @@
     <ClInclude Include="include\Space.h" />
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\Structure.h" />
+    <ClInclude Include="include\Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Predator.cpp" />
     <ClCompile Include="src\Space.cpp" />
+    <ClCompile Include="src\Worker.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

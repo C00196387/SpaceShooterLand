@@ -1,37 +1,13 @@
-﻿  Space.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\space.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\space.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Predator.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(92): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\predator.cpp(118): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Player.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\player.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\player.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\player.cpp(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\player.cpp(34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\player.cpp(95): warning C4305: '*=': truncation from 'double' to 'float'
-  ManagedSprite.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\managedsprite.cpp(7): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\managedsprite.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  game.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\game.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.exe
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.pdb (Partial PDB)
+﻿  Worker.cpp
+c:\users\jocon\desktop\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(67): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\spaceshooterland\src\worker.cpp(82): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.exe
+  Project.vcxproj -> C:\Users\jocon\Desktop\SpaceShooterLand\x64\Debug\Project.pdb (Partial PDB)
