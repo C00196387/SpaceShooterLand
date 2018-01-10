@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Predator.h"
 #include "Worker.h"
+#include "Cannon.h"
 #include "Space.h"
 #include "Graph.h"
 
@@ -16,9 +17,7 @@ int main()
 	sf::View *mainCamera = new sf::View(sf::FloatRect(0, 0, 600, 600));
 	mainCamera->setCenter(300, 300);
 	mainCamera->zoom(0.5);
-
 	Graph * solidMap = new Graph();
-
 	srand(time(NULL));
 
 	ResourceManager Resources;
@@ -28,6 +27,8 @@ int main()
 	Resources.LoadTexture(".\\resources\\Space3.png", "space3");
 	Resources.LoadTexture(".\\resources\\Predator.png", "predator");
 	Resources.LoadTexture(".\\resources\\Worker.png", "worker");
+	Resources.LoadTexture(".\\resources\\Cannon.png", "cannon");
+
 
 	std::vector<ManagedSprite*> spaceTiles;
 	spaceTiles.push_back(new ManagedSprite(Resources.GetTexture("space1"), 16, 16));
@@ -66,9 +67,9 @@ int main()
 	entity->push_back(new Predator(&Resources, entity, solidMap, 200, 220));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 250, 180));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 210, 250));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 300, 250));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
+	entity->push_back(new Cannon(&Resources, entity, 50, 50));
 	std::cout << entity->size() << std::endl;
 
 	//FPS stuff
@@ -87,7 +88,7 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
-
+		
 		timeSinceLastUpdate += clock.restart();
 		if (timeSinceLastUpdate > timePerFrame)
 		{

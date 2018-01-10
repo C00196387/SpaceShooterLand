@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Cannon.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Graph.h" />
     <ClInclude Include="include\ManagedSprite.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="include\Worker.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cannon.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\ManagedSprite.cpp" />
     <ClCompile Include="src\Player.cpp" />
