@@ -43,11 +43,11 @@ void Predator::Update(sf::Time t)
 				if (DistanceFormula(m_entity->at(i)->Position(), m_position) > 32 * 5)
 				{
 					m_path = m_graph->Path((int)(m_entity->at(i)->Position().x / 32), (int)(m_entity->at(i)->Position().y / 32), (int)(m_position.x / 32), (int)(m_position.y / 32));
+					m_seekingPlayer = false;
 				}
 				else
 				{
-					m_path.clear();
-					m_path.push_back(Node(m_entity->at(i)->Position().x / 32, m_entity->at(i)->Position().y / 32, false));
+					m_seekingPlayer = true;
 				}
 			}
 			else if (m_entity->at(i)->Type() == "Predator" && m_entity->at(i) != this)
@@ -61,15 +61,28 @@ void Predator::Update(sf::Time t)
 						m_formation.back()->m_isSlave = true;
 						m_formation.back()->m_master = this;
 						std::cout << "I have enslaved " << i << "!" << std::endl;
+						m_seekingPlayer = false;
 					}
 				}
 			}
 			m_pathRenewTimer = 150;
 		}
 	}
-	else if(!m_isSlave)
+	else if (!m_isSlave)
 	{
 		m_pathRenewTimer--;
+	}
+
+	if (m_seekingPlayer)
+	{
+		for (int i = 0; i < m_entity->size(); i++)
+		{
+			if (m_entity->at(i)->Type() == "Player")
+			{
+				m_path.clear();
+				m_path.push_back(Node(m_entity->at(i)->Position().x / 32, m_entity->at(i)->Position().y / 32, false));
+			}
+		}
 	}
 
 	if (m_isSlave)
@@ -93,7 +106,28 @@ void Predator::Update(sf::Time t)
 
 	for (int i = 0; i < m_entity->size(); i++)
 	{
+		if (m_entity->at(i) != this)
+		{
+			sf::Vector2f tempPos = m_position;
+			tempPos.x = m_position.x + (m_velocity.x * (float)t.asSeconds());
+			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
+			sf::Rect<int> tempRect2 = sf::Rect<int>(m_entity->at(i)->Position().x, m_entity->at(i)->Position().y, 32, 32);
 
+			sf::Vector2f tempPos2 = m_position;
+			tempPos2.y = m_position.y + (m_velocity.y * (float)t.asSeconds());
+			sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
+			sf::Rect<int> tempRect4 = sf::Rect<int>(m_entity->at(i)->Position().x, m_entity->at(i)->Position().y, 32, 32);
+			if (tempRect1.intersects(tempRect2))
+			{
+				m_velocity.x = (m_velocity.x * -1) / 4;
+				m_entity->at(i)->m_velocity.x = m_velocity.x * -1;
+			}
+			else if (tempRect3.intersects(tempRect4))
+			{
+				m_velocity.y = (m_velocity.y * -1) / 4;
+				m_entity->at(i)->m_velocity.y = m_velocity.x * -1;
+			}
+		}
 	}
 	
 	m_position = m_position + (m_velocity * (float)t.asSeconds());

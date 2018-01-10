@@ -63,10 +63,11 @@ int main()
 	std::vector<Entity*> * entity = new std::vector<Entity*>();
 
 	entity->push_back(new Player(&Resources, entity, mainCamera, 50, 50));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 250, 220));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 280, 270));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 200, 220));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 250, 180));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 210, 250));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 300, 250));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
 	std::cout << entity->size() << std::endl;
 

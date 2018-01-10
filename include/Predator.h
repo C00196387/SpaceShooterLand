@@ -21,9 +21,11 @@ private:
 
 	const float m_maxspeed = 50;
 	const float m_maxAcceleration = 25.0f;
-	const float m_radiusStop = 0;
+	const float m_radiusStop = 32;
 	const float m_radiusSlow = 128;
 	const float m_maxaccel = 10;
+
+	bool m_seekingPlayer;
 
 	float m_speed;
 	float m_orientation;
