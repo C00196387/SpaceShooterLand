@@ -2,10 +2,12 @@
 
 
 
-Player::Player(ResourceManager * r, sf::View * cam, int x, int y)
+Player::Player(ResourceManager * r, std::vector<Entity*> * e, sf::View * cam, int x, int y)
 {
 	m_position.x = x;
 	m_position.y = y;
+
+	m_entity = e;
 
 	m_resource = r;
 
@@ -18,6 +20,8 @@ Player::Player(ResourceManager * r, sf::View * cam, int x, int y)
 	m_sprite.GetSprite()->setOrigin(8, 8);
 
 	m_speed = 0;
+
+	m_type = "Player";
 
 	m_camera = cam;
 }

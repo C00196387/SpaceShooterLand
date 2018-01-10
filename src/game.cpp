@@ -27,8 +27,6 @@ int main()
 	Resources.LoadTexture(".\\resources\\Space3.png", "space3");
 	Resources.LoadTexture(".\\resources\\Predator.png", "predator");
 
-	Player p = Player(&Resources, mainCamera, 50, 50);
-
 	std::vector<ManagedSprite*> spaceTiles;
 	spaceTiles.push_back(new ManagedSprite(Resources.GetTexture("space1"), 16, 16));
 	spaceTiles.at(0)->SetScale(2);
@@ -47,10 +45,10 @@ int main()
 
 	std::vector<std::vector<Space*>> space;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 25; i++)
 	{
 		std::vector<Space*> holder;
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 25; j++)
 		{
 			holder.push_back(new Space(&spaceTiles, i, j));
 			solidMap->AddNode(i, j, false);
@@ -60,7 +58,15 @@ int main()
 
 	solidMap->GenerateGraph();
 
-	Predator pr = Predator(&Resources, solidMap, 100, 100);
+	std::vector<Entity*> * entity = new std::vector<Entity*>();
+
+	entity->push_back(new Player(&Resources, entity, mainCamera, 50, 50));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 250, 220));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 280, 270));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
+	entity->push_back(new Predator(&Resources, entity, solidMap, 210, 250));
+
+	std::cout << entity->size() << std::endl;
 
 	//FPS stuff
 	sf::Clock clock;
@@ -83,20 +89,18 @@ int main()
 		if (timeSinceLastUpdate > timePerFrame)
 		{
 			//Logic Code Goes Here
-
 			for (int i = 0; i < spaceTiles.size(); i++)
 			{
 				spaceTiles.at(i)->Update();
 			}
-
-			p.Update(timeSinceLastUpdate);
-			pr.Update(timeSinceLastUpdate);
-
+			for (int i = 0; i < entity->size(); i++)
+			{
+				entity->at(i)->Update(timeSinceLastUpdate);
+			}
 			//No More
 
 			window->clear();
 			//Display Code Goes Here
-
 			for (int i = 0; i < space.size(); i++)
 			{
 				for (int j = 0; j < space.at(i).size(); j++)
@@ -104,13 +108,12 @@ int main()
 					space.at(i).at(j)->Draw(*window);
 				}
 			}
-
-			p.Draw(*window);
-			pr.Draw(*window);
-
+			for (int i = 0; i < entity->size(); i++)
+			{
+				entity->at(i)->Draw(*window);
+			}
 			//No More
 			window->display();
-
 			window->setView(*mainCamera);
 
 			timeSinceLastUpdate = sf::Time::Zero;

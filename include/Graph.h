@@ -129,6 +129,7 @@ public:
 			m_graph.at(i)->marked = false;
 			m_graph.at(i)->weight = 9999999;
 			m_graph.at(i)->heuristic = sqrt(((dest->x - m_graph.at(i)->x)*(dest->x - m_graph.at(i)->x)) + ((dest->y - m_graph.at(i)->y)*(dest->y - m_graph.at(i)->y)));
+			m_graph.at(i)->previous = NULL;
 		}
 
 		dest->weight = 0;
