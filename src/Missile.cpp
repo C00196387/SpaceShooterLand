@@ -144,5 +144,4 @@ void Missile::Seek(sf::Vector2f otherLoc, sf::Time t)
 	{
 		m_velocity.y = -m_maxspeed;
 	}
-	std::cout << m_velocity.x << " " << m_velocity.y << std::endl;
 }

@@ -115,10 +115,21 @@ void Worker::seekAndWander(sf::Vector2f otherLoc, sf::Time t)
 	}
 
 	m_velocity = m_velocity + (m_linear * (float)t.asSeconds());
-	if (GetMagnitude(m_velocity) > m_maxspeed)
+	if (m_velocity.x > m_maxspeed)
 	{
-		m_velocity.x = m_velocity.x / GetMagnitude(m_velocity);
-		m_velocity.y = m_velocity.y / GetMagnitude(m_velocity);
-		m_velocity = m_velocity * m_maxspeed;
+		m_velocity.x = m_maxspeed;
+	}
+	else if (m_velocity.x < -m_maxspeed)
+	{
+		m_velocity.x = -m_maxspeed;
+	}
+
+	if (m_velocity.y > m_maxspeed)
+	{
+		m_velocity.y = m_maxspeed;
+	}
+	else if (m_velocity.y < -m_maxspeed)
+	{
+		m_velocity.y = -m_maxspeed;
 	}
 }

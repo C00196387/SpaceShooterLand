@@ -12,6 +12,7 @@
 #include "Graph.h"
 #include "Missile.h"
 #include "Nest.h"
+#include "Radar.h"
 
 int main()
 {
@@ -20,6 +21,9 @@ int main()
 	sf::View *mainCamera = new sf::View(sf::FloatRect(0, 0, 600, 600));
 	mainCamera->setCenter(300, 300);
 	mainCamera->zoom(0.5);
+	sf::View hudCamera = sf::View(sf::FloatRect(0, 0, 600, 600));
+	hudCamera.zoom(0.5);
+	hudCamera.setCenter(150, 150);
 	Graph * solidMap = new Graph();
 	srand(time(NULL));
 
@@ -35,6 +39,15 @@ int main()
 	Resources.LoadTexture(".\\resources\\Explosion.png", "explosion");
 	Resources.LoadTexture(".\\resources\\Missile.png", "missile");
 	Resources.LoadTexture(".\\resources\\Nest.png", "nest");
+	Resources.LoadTexture(".\\resources\\radar_none.png", "radar");
+	Resources.LoadTexture(".\\resources\\radar_n.png",  "radar_n");
+	Resources.LoadTexture(".\\resources\\radar_s.png",  "radar_s");
+	Resources.LoadTexture(".\\resources\\radar_e.png",  "radar_e");
+	Resources.LoadTexture(".\\resources\\radar_w.png",  "radar_w");
+	Resources.LoadTexture(".\\resources\\radar_ne.png", "radar_ne");
+	Resources.LoadTexture(".\\resources\\radar_nw.png", "radar_nw");
+	Resources.LoadTexture(".\\resources\\radar_se.png", "radar_se");
+	Resources.LoadTexture(".\\resources\\radar_sw.png", "radar_sw");
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -74,8 +87,11 @@ int main()
 
 	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 0, 0));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
-	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 300, 300));
-	std::cout << entity->size() << std::endl;
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 200, 300));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 300, 300));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 400, 300));
+
+	Radar radar(&Resources, entity, 300-32,0);
 
 	//FPS stuff
 	sf::Clock clock;
@@ -108,6 +124,7 @@ int main()
 			{
 				entity->at(i)->Update(timeSinceLastUpdate);
 			}
+			radar.Update();
 			//No More
 
 			window->clear();
@@ -123,6 +140,8 @@ int main()
 			{
 				entity->at(i)->Draw(*window);
 			}
+			window->setView(hudCamera);
+			radar.Draw(*window);
 			//No More
 			window->display();
 			window->setView(*mainCamera);
