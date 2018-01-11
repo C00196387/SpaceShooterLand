@@ -2,9 +2,10 @@
 #define PLAYER_H
 
 #include "Entity.h"
+#include "Bullet.h"
+#include "Cannon.h"
 
-class Player :
-	public Entity
+class Player : public Entity
 {
 public:
 	Player(ResourceManager * r, std::vector<Entity*> * e, sf::View * cam, int x, int y);
@@ -21,7 +22,8 @@ private:
 
 	sf::View * m_camera;
 	float m_speed;
-	float m_orientation;
+
+	Cannon * m_cannon;
 
 	std::vector<Entity*> * m_entity;
 

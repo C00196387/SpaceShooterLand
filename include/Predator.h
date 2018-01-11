@@ -28,7 +28,6 @@ private:
 	bool m_seekingPlayer;
 
 	float m_speed;
-	float m_orientation;
 	std::vector<Entity*>* m_entity;
 
 	std::vector<Entity*> m_formation;

@@ -15,9 +15,6 @@ Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int
 	m_sprite = ManagedSprite(r->GetTexture("predator"), 16, 16);
 	m_sprite.SetScale(2);
 
-	m_sprite.SetIdle(0);
-	m_sprite.SetAnimationStates(1, 2);
-
 	m_sprite.GetSprite()->setOrigin(8, 8);
 	m_sprite.SetAnimationStates(0, 1);
 	m_sprite.AnimateOn();
@@ -28,6 +25,8 @@ Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int
 	m_type = "Predator";
 
 	m_pathRenewTimer = 0;
+
+	m_alive = true;
 
 	m_speed = 0;
 }
@@ -106,7 +105,7 @@ void Predator::Update(sf::Time t)
 				}
 				else
 				{
-					m_formation.at(i)->m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32), (m_entity->at(playerIndex)->Position().y / 32)-2, false));
+					m_formation.at(i)->m_path.push_back(Node((m_entity->at(playerIndex)->Position().x / 32), (m_entity->at(playerIndex)->Position().y / 32) - 2, false));
 				}
 			}
 		}
@@ -149,23 +148,20 @@ void Predator::Update(sf::Time t)
 			sf::Rect<int> tempRect4 = sf::Rect<int>(m_entity->at(i)->Position().x, m_entity->at(i)->Position().y, 32, 32);
 			if (tempRect1.intersects(tempRect2))
 			{
-				m_velocity.x = (m_velocity.x * -1) / 4;
-				m_entity->at(i)->m_velocity.x = m_velocity.x * -1;
+				m_velocity.x = (m_velocity.x * -1) / 2;
+				m_entity->at(i)->m_velocity.x = (m_velocity.x / 2) * -1;
 			}
 			else if (tempRect3.intersects(tempRect4))
 			{
-				m_velocity.y = (m_velocity.y * -1) / 4;
-				m_entity->at(i)->m_velocity.y = m_velocity.x * -1;
+				m_velocity.y = (m_velocity.y * -1) / 2;
+				m_entity->at(i)->m_velocity.y = (m_velocity.y/2) * -1;
 			}
 		}
 	}
-	
+
 	m_position = m_position + (m_velocity * (float)t.asSeconds());
 
-	if (GetMagnitude(m_velocity) > 0)
-	{
-		m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
-	}
+	m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
 
 	m_sprite.GetSprite()->setPosition(m_position);
 	m_sprite.Update();

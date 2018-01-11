@@ -16,6 +16,7 @@ public:
 	virtual std::string Type() = 0;
 	virtual sf::Vector2f Position() = 0;
 
+	float m_orientation;
 	ResourceManager * m_resource;
 	ManagedSprite m_sprite;
 	bool m_leader = false;
@@ -25,6 +26,7 @@ public:
 	sf::Vector2f m_position;
 	sf::Vector2f m_velocity;
 	std::string m_type;
+	bool m_alive;
 
 };
 #endif

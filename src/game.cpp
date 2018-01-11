@@ -28,6 +28,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\Predator.png", "predator");
 	Resources.LoadTexture(".\\resources\\Worker.png", "worker");
 	Resources.LoadTexture(".\\resources\\Cannon.png", "cannon");
+	Resources.LoadTexture(".\\resources\\Bullet.png", "bullet");
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -69,7 +70,6 @@ int main()
 	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
 	entity->push_back(new Predator(&Resources, entity, solidMap, 300, 250));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
-	entity->push_back(new Cannon(&Resources, entity, 50, 50));
 	std::cout << entity->size() << std::endl;
 
 	//FPS stuff

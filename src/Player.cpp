@@ -23,7 +23,12 @@ Player::Player(ResourceManager * r, std::vector<Entity*> * e, sf::View * cam, in
 
 	m_type = "Player";
 
+	m_cannon = new Cannon(r, e, x, y, "player");
+
+	m_alive = true;
+
 	m_camera = cam;
+
 }
 
 void Player::Update(sf::Time t)
@@ -36,6 +41,9 @@ void Player::Update(sf::Time t)
 	m_position.x = m_position.x + m_velocity.x * t.asSeconds();
 	m_position.y = m_position.y + m_velocity.y * t.asSeconds();
 
+	m_cannon->Position(m_position.x, m_position.y);
+	m_cannon->Update(t);
+
 	m_camera->setCenter(m_position.x, m_position.y);
 
 	m_sprite.GetSprite()->setPosition(m_position);
@@ -46,31 +54,32 @@ void Player::Draw(sf::RenderWindow & r)
 {
 	m_sprite.GetSprite()->setRotation(m_orientation);
 	r.draw(*m_sprite.GetSprite());
+	m_cannon->Draw(r);
 }
 
 void Player::Controls()
 {
 	bool isAccelerateOn = false;
 	bool isButtonPressed = false;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		isAccelerateOn = true;
 		isButtonPressed = true;
 		m_speed += 2.5;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		if (m_speed > 0)
 		{
 			m_speed -= 5;
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		m_orientation -= 4;
 		isButtonPressed = true;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		m_orientation += 4;
 		isButtonPressed = true;
