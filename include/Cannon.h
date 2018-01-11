@@ -22,6 +22,7 @@ public:
 	void Orientation(float x) { m_orientation = x; };
 	void BulletSpeed(float x) { m_bulletSpeed = x; };
 	void FireRate(int x) { m_fireRate = x; };
+	void ForceFire();
 
 private:
 	float m_angle;

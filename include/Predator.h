@@ -30,7 +30,7 @@ private:
 	float m_speed;
 	std::vector<Entity*>* m_entity;
 
-	std::vector<Entity*> m_formation;
+	Cannon * m_cannon;
 
 	Graph * m_graph;
 

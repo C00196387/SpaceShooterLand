@@ -17,6 +17,7 @@ public:
 	virtual sf::Vector2f Position() = 0;
 
 	float m_orientation;
+	std::vector<Entity*> m_formation;
 	ResourceManager * m_resource;
 	ManagedSprite m_sprite;
 	bool m_leader = false;
