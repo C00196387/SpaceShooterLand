@@ -23,9 +23,12 @@ Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 	m_source = source;
 
+	m_explosion = explosion;
+
 	m_type = "Bullet";
 	m_rotation = 0;
 	m_alive = false;
+	m_health = 1;
 }
 
 void Bullet::Update(sf::Time t)
@@ -34,7 +37,7 @@ void Bullet::Update(sf::Time t)
 	{
 		if (m_timer <= 0)
 		{
-			m_alive = false;
+			m_health = 0;
 		}
 		else
 		{
@@ -59,14 +62,29 @@ void Bullet::Update(sf::Time t)
 			{
 				if (m_source == "Player")
 				{
-					if (m_entity->at(i)->Type() == "Predator")
+					if (m_entity->at(i)->Type() == "Predator" || m_entity->at(i)->Type() == "Nest")
 					{
 						m_entity->at(i)->Health(m_entity->at(i)->Health()-1);
-						m_alive = false;
+						m_health = 0;
 					}
 				}
 			}
 		}
+	}
+	if (m_health <= 0 && m_alive)
+	{
+		m_explosionTimer = 120;
+		m_alive = false;
+	}
+	else if (m_explosionTimer > 0 && !m_alive)
+	{
+		m_explosionTimer--;
+	}
+	else if (m_explosionTimer <= 0 && !m_alive)
+	{
+		m_position.x = -1000;
+		m_position.y = -1000;
+		m_sprite.GetSprite()->setPosition(m_position);
 	}
 }
 
@@ -78,6 +96,11 @@ void Bullet::Draw(sf::RenderWindow & r)
 		m_sprite.GetSprite()->setRotation(m_rotation);
 		r.draw(*m_sprite.GetSprite());
 	}
+	if (m_explosionTimer > 0 && !m_alive)
+	{
+		m_explosion->m_position = m_position;
+		m_explosion->Draw(r);
+	}
 }
 
 void Bullet::Fire(int x, int y, float speed, float direction)
@@ -88,4 +111,5 @@ void Bullet::Fire(int x, int y, float speed, float direction)
 	m_orientation = direction;
 	m_alive = true;
 	m_timer = 300;
+	m_health = 1;
 }

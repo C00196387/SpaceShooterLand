@@ -122,6 +122,8 @@
     <ClInclude Include="include\Explosion.h" />
     <ClInclude Include="include\Graph.h" />
     <ClInclude Include="include\ManagedSprite.h" />
+    <ClInclude Include="include\Missile.h" />
+    <ClInclude Include="include\Nest.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Predator.h" />
     <ClInclude Include="include\ResourceManager.h" />
@@ -136,6 +138,8 @@
     <ClCompile Include="src\Explosion.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\ManagedSprite.cpp" />
+    <ClCompile Include="src\Missile.cpp" />
+    <ClCompile Include="src\Nest.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Predator.cpp" />
     <ClCompile Include="src\Space.cpp" />

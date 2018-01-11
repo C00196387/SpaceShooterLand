@@ -26,6 +26,7 @@ Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 	m_type = "Player";
 
 	m_cannon = new Cannon(r, e, explosion, x, y, "Player");
+	m_cannon->FireRate(25);
 
 	m_alive = true;
 

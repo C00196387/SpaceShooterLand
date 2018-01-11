@@ -10,6 +10,8 @@
 #include "Space.h"
 #include "Explosion.h"
 #include "Graph.h"
+#include "Missile.h"
+#include "Nest.h"
 
 int main()
 {
@@ -31,6 +33,8 @@ int main()
 	Resources.LoadTexture(".\\resources\\Cannon.png", "cannon");
 	Resources.LoadTexture(".\\resources\\Bullet.png", "bullet");
 	Resources.LoadTexture(".\\resources\\Explosion.png", "explosion");
+	Resources.LoadTexture(".\\resources\\Missile.png", "missile");
+	Resources.LoadTexture(".\\resources\\Nest.png", "nest");
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -69,11 +73,8 @@ int main()
 	Explosion * explosion = new Explosion(&Resources, entity);
 
 	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 0, 0));
-	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 100, 220));
-	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 250, 380));
-	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 230, 270));
-	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 300, 250));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 300, 300));
 	std::cout << entity->size() << std::endl;
 
 	//FPS stuff
@@ -121,7 +122,6 @@ int main()
 			for (int i = 0; i < entity->size(); i++)
 			{
 				entity->at(i)->Draw(*window);
-				explosion->Draw(*window);
 			}
 			//No More
 			window->display();

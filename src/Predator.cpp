@@ -34,7 +34,7 @@ Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * ex
 	m_cannon->FireRate(50);
 	m_cannon->BulletSpeed(25);
 
-	m_health = 3;
+	m_health = 2;
 
 	m_speed = 0;
 }
@@ -181,12 +181,18 @@ void Predator::Update(sf::Time t)
 				if (tempRect1.intersects(tempRect2))
 				{
 					m_velocity.x = (m_velocity.x * -1) / 2;
-					m_entity->at(i)->m_velocity.x = (m_velocity.x / 2) * -1;
+					if (m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
+					{
+						m_entity->at(i)->m_velocity.x = (m_velocity.x / 2) * -1;
+					}
 				}
 				else if (tempRect3.intersects(tempRect4))
 				{
 					m_velocity.y = (m_velocity.y * -1) / 2;
-					m_entity->at(i)->m_velocity.y = (m_velocity.y / 2) * -1;
+					if (m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
+					{
+						m_entity->at(i)->m_velocity.y = (m_velocity.y / 2) * -1;
+					}
 				}
 			}
 		}
@@ -208,7 +214,6 @@ void Predator::Update(sf::Time t)
 	}
 	else if (m_explosionTimer > 0 && !m_alive)
 	{
-		m_explosion->Position(m_position);
 		m_explosionTimer--;
 	}
 	else if (m_explosionTimer <= 0 && !m_alive)
@@ -226,6 +231,11 @@ void Predator::Draw(sf::RenderWindow & r)
 		m_sprite.GetSprite()->setRotation(m_orientation);
 		r.draw(*m_sprite.GetSprite());
 		m_cannon->Draw(r);
+	}
+	if (m_explosionTimer > 0 && !m_alive)
+	{
+		m_explosion->m_position = m_position;
+		m_explosion->Draw(r);
 	}
 }
 
