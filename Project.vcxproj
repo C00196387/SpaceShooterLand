@@ -119,6 +119,7 @@
     <ClInclude Include="include\Bullet.h" />
     <ClInclude Include="include\Cannon.h" />
     <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\Explosion.h" />
     <ClInclude Include="include\Graph.h" />
     <ClInclude Include="include\ManagedSprite.h" />
     <ClInclude Include="include\Player.h" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Cannon.cpp" />
+    <ClCompile Include="src\Explosion.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\ManagedSprite.cpp" />
     <ClCompile Include="src\Player.cpp" />

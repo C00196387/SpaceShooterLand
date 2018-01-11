@@ -15,6 +15,8 @@ public:
 	virtual void Draw(sf::RenderWindow & r) = 0;
 	virtual std::string Type() = 0;
 	virtual sf::Vector2f Position() = 0;
+	virtual void Health(int x) = 0;
+	virtual int Health() = 0;
 
 	float m_orientation;
 	std::vector<Entity*> m_formation;
@@ -26,8 +28,11 @@ public:
 	std::vector<Node> m_path;
 	sf::Vector2f m_position;
 	sf::Vector2f m_velocity;
+	int m_explosionTimer;
 	std::string m_type;
 	bool m_alive;
+
+	int m_health;
 
 };
 #endif

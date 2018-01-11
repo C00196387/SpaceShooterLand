@@ -2,10 +2,12 @@
 
 
 
-Player::Player(ResourceManager * r, std::vector<Entity*> * e, sf::View * cam, int x, int y)
+Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, sf::View * cam, int x, int y)
 {
 	m_position.x = x;
 	m_position.y = y;
+
+	m_explosion = explosion;
 
 	m_entity = e;
 
@@ -23,7 +25,7 @@ Player::Player(ResourceManager * r, std::vector<Entity*> * e, sf::View * cam, in
 
 	m_type = "Player";
 
-	m_cannon = new Cannon(r, e, x, y, "player");
+	m_cannon = new Cannon(r, e, explosion, x, y, "Player");
 
 	m_alive = true;
 

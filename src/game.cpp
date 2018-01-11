@@ -8,6 +8,7 @@
 #include "Worker.h"
 #include "Cannon.h"
 #include "Space.h"
+#include "Explosion.h"
 #include "Graph.h"
 
 int main()
@@ -29,6 +30,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\Worker.png", "worker");
 	Resources.LoadTexture(".\\resources\\Cannon.png", "cannon");
 	Resources.LoadTexture(".\\resources\\Bullet.png", "bullet");
+	Resources.LoadTexture(".\\resources\\Explosion.png", "explosion");
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -64,11 +66,13 @@ int main()
 
 	std::vector<Entity*> * entity = new std::vector<Entity*>();
 
-	entity->push_back(new Player(&Resources, entity, mainCamera, 0, 0));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 100, 220));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 250, 380));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 230, 270));
-	entity->push_back(new Predator(&Resources, entity, solidMap, 300, 250));
+	Explosion * explosion = new Explosion(&Resources, entity);
+
+	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 0, 0));
+	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 100, 220));
+	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 250, 380));
+	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 230, 270));
+	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 300, 250));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
 	std::cout << entity->size() << std::endl;
 
@@ -93,6 +97,8 @@ int main()
 		if (timeSinceLastUpdate > timePerFrame)
 		{
 			//Logic Code Goes Here
+			explosion->Position(sf::Vector2f(-1000, -1000));
+			explosion->Update(timeSinceLastUpdate);
 			for (int i = 0; i < spaceTiles.size(); i++)
 			{
 				spaceTiles.at(i)->Update();
@@ -115,6 +121,7 @@ int main()
 			for (int i = 0; i < entity->size(); i++)
 			{
 				entity->at(i)->Draw(*window);
+				explosion->Draw(*window);
 			}
 			//No More
 			window->display();

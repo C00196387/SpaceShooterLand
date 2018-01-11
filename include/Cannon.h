@@ -6,13 +6,14 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 #include "Bullet.h"
+#include "Explosion.h"
 
 class Cannon
 {
 
 public:
 	Cannon() {};
-	Cannon(ResourceManager * r, std::vector<Entity*> * e, int x, int y, std::string source);
+	Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y, std::string source);
 	~Cannon() {}
 	void Update(sf::Time t);
 	void Draw(sf::RenderWindow & r);

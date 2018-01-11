@@ -15,6 +15,8 @@ public:
 	void Draw(sf::RenderWindow & r);
 	std::string Type() { return m_type; };
 	sf::Vector2f Position() { return m_position; };
+	void Health(int x) { m_health = x; };
+	int Health() { return m_health; };
 
 private:
 

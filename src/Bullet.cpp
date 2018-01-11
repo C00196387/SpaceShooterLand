@@ -2,12 +2,13 @@
 
 
 
-Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, int x, int y, std::string source)
+Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y, std::string source)
 {
 	m_position.x = x;
 	m_position.y = y;
 
 	m_entity = e;
+	m_explosion = explosion;
 
 	m_resource = r;
 
@@ -19,6 +20,8 @@ Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, int x, int y, std:
 	m_sprite.AnimateOn();
 
 	m_sprite.GetSprite()->setOrigin(8, 8);
+
+	m_source = source;
 
 	m_type = "Bullet";
 	m_rotation = 0;
@@ -46,6 +49,24 @@ void Bullet::Update(sf::Time t)
 
 		m_rotation++;
 		m_sprite.Update();
+
+		for (int i = 0; i < m_entity->size(); i++)
+		{
+			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 6, m_position.y - 6);
+			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 12, 12);
+			sf::Rect<int> tempRect2 = sf::Rect<int>(m_entity->at(i)->Position().x - 16, m_entity->at(i)->Position().y - 16, 32, 32);
+			if (tempRect1.intersects(tempRect2))
+			{
+				if (m_source == "Player")
+				{
+					if (m_entity->at(i)->Type() == "Predator")
+					{
+						m_entity->at(i)->Health(m_entity->at(i)->Health()-1);
+						m_alive = false;
+					}
+				}
+			}
+		}
 	}
 }
 
