@@ -28,7 +28,7 @@ Cannon::Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 }
 
-void Cannon::Update(sf::Time t)
+void Cannon::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_source == "Player" && m_fireTimer <= 0)
 	{
@@ -54,7 +54,7 @@ void Cannon::Update(sf::Time t)
 	}
 	for (int i = 0; i < m_bullets.size(); i++)
 	{
-		m_bullets.at(i).Update(t);
+		m_bullets.at(i).Update(t, s);
 	}
 }
 

@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "ResourceManager.h"
 #include "Graph.h"
+#include "Structure.h"
 #include "ManagedSprite.h"
 
 //All moving objects
@@ -11,7 +12,7 @@ class Entity
 {
 public:
 
-	virtual void Update(sf::Time t) = 0;
+	virtual void Update(sf::Time t, std::vector<Structure*>* s) = 0;
 	virtual void Draw(sf::RenderWindow & r) = 0;
 	virtual std::string Type() = 0;
 	virtual sf::Vector2f Position() = 0;

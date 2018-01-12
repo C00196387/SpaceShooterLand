@@ -12,7 +12,7 @@ public:
 	Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, sf::View * cam, int x, int y);
 	~Player() {};
 
-	void Update(sf::Time t);
+	void Update(sf::Time t, std::vector<Structure*>* s);
 	void Draw(sf::RenderWindow & r);
 	std::string Type() { return m_type; };
 	sf::Vector2f Position() { return m_position; };

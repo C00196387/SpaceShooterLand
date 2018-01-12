@@ -10,7 +10,7 @@ public:
 	Missile(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y);
 	~Missile() {};
 
-	void Update(sf::Time t);
+	void Update(sf::Time t, std::vector<Structure*>* s);
 	void Draw(sf::RenderWindow & r);
 	std::string Type() { return m_type; };
 	sf::Vector2f Position() { return m_position; };

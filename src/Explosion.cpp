@@ -19,7 +19,7 @@ Explosion::Explosion(ResourceManager * r, std::vector<Entity*> * e)
 	m_alive = true;
 }
 
-void Explosion::Update(sf::Time t)
+void Explosion::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	m_sprite.Update();
 }

@@ -14,7 +14,6 @@ Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion,
 	m_sprite = ManagedSprite(r->GetTexture("nest"), 16, 16);
 	m_sprite.SetScale(2);
 
-	m_sprite.GetSprite()->setOrigin(8, 8);
 	m_sprite.SetAnimationStates(0, 2);
 	m_sprite.AnimateOn();
 
@@ -40,19 +39,20 @@ Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion,
 	}
 }
 
-void Nest::Update(sf::Time t)
+void Nest::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
 	{
 		if (m_birthTimer <= 0)
 		{
-			m_birthTimer = 300;
+			m_birthTimer = 600;
 			for (int i = 0; i < m_predators.size(); i++)
 			{
 				if (!m_predators.at(i)->m_alive)
 				{
 					m_predators.at(i)->m_alive = true;
-					m_predators.at(i)->m_position = m_position;
+					m_predators.at(i)->m_position.x = m_position.x + 16;
+					m_predators.at(i)->m_position.y = m_position.y + 16;
 					m_predators.at(i)->m_health = 2;
 					break;
 				}
@@ -69,7 +69,7 @@ void Nest::Update(sf::Time t)
 			{
 				if (!m_missiles.at(i)->m_alive && m_missiles.at(i)->m_explosionTimer <= 0)
 				{
-					m_missiles.at(i)->Fire(m_position.x, m_position.y);
+					m_missiles.at(i)->Fire(m_position.x+16, m_position.y+16);
 					break;
 				}
 			}

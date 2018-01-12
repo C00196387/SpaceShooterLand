@@ -13,6 +13,7 @@
 #include "Missile.h"
 #include "Nest.h"
 #include "Radar.h"
+#include "Block.h"
 
 int main()
 {
@@ -48,6 +49,13 @@ int main()
 	Resources.LoadTexture(".\\resources\\radar_nw.png", "radar_nw");
 	Resources.LoadTexture(".\\resources\\radar_se.png", "radar_se");
 	Resources.LoadTexture(".\\resources\\radar_sw.png", "radar_sw");
+	Resources.LoadTexture(".\\resources\\Border.png", "border");
+	Resources.LoadTexture(".\\resources\\astroid_wall.png", "a_wall");
+	Resources.LoadTexture(".\\resources\\astroid_floor.png", "a_floor");
+
+	std::vector<Entity*> * entity = new std::vector<Entity*>();
+
+	Explosion * explosion = new Explosion(&Resources, entity);
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -66,30 +74,102 @@ int main()
 	spaceTiles.at(2)->SetAnimationStates(0, 1);
 	spaceTiles.at(2)->AnimateOn();
 
-	std::vector<std::vector<Space*>> space;
+	ManagedSprite * border = new ManagedSprite(Resources.GetTexture("border"), 16, 16);
+	border->SetScale(2);
+	border->SetAnimationStates(0, 1);
+	border->AnimateOn();
 
-	for (int i = 0; i < 25; i++)
+	ManagedSprite * astroidWall = new ManagedSprite(Resources.GetTexture("a_wall"), 16, 16);
+	astroidWall->SetScale(2);
+
+	ManagedSprite * astroidFloor = new ManagedSprite(Resources.GetTexture("a_floor"), 16, 16);
+	astroidFloor->SetScale(2);
+
+	std::vector<std::vector<std::string>> map =
+	{ {"W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W",},
+	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
+	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
+	{ "W","S","S","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","S","S","W", },
+	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","X","X","X","X","X","X","X","X","X","X","X","F","F","X","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","F","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","F","F","F","X","F","F","X","X","X","X","X","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","F","F","F","X","F","F","F","F","X","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","X","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","X","X","X","X","X","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","S","S","W", },
+	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
+	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
+	{ "W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W", } };
+
+
+
+	int width = 25;
+	int height = 25;
+
+	std::vector<Structure*> solidObjects;
+	std::vector<std::vector<Structure*>> world;
+	for (int i = 0; i < width; i++)
 	{
-		std::vector<Space*> holder;
-		for (int j = 0; j < 25; j++)
+		world.push_back(std::vector<Structure*>());
+		std::cout << "" << std::endl;
+		for (int j = 0; j < height; j++)
 		{
-			holder.push_back(new Space(&spaceTiles, i, j));
-			solidMap->AddNode(i, j, false);
+			if (map.at(i).at(j) == "W")
+			{
+				world.at(i).push_back(new Block(border, i, j, true));
+				solidMap->AddNode(i, j, true);
+			}
+			else if (map.at(i).at(j) == "S")
+			{
+				world.at(i).push_back(new Space(&spaceTiles, i, j));
+				solidMap->AddNode(i, j, false);
+			}
+			else if (map.at(i).at(j) == "X")
+			{
+				world.at(i).push_back(new Block(astroidWall, i, j, true));
+				solidMap->AddNode(i, j, true);
+			}
+			else if (map.at(i).at(j) == "F")
+			{
+				world.at(i).push_back(new Block(astroidFloor, i, j, false));
+				solidMap->AddNode(i, j, false);
+			}
 		}
-		space.push_back(holder);
+	}
+	for (int i = 0; i < width; i++)
+	{
+		world.push_back(std::vector<Structure*>());
+		for (int j = 0; j < height; j++)
+		{
+			if (world.at(i).at(j)->m_solid)
+			{
+				solidObjects.push_back(world.at(i).at(j));
+			}
+		}
 	}
 
 	solidMap->GenerateGraph();
 
-	std::vector<Entity*> * entity = new std::vector<Entity*>();
-
-	Explosion * explosion = new Explosion(&Resources, entity);
-
-	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 0, 0));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 200, 300));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 300, 300));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 400, 300));
+	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 140, 64));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 4 * 32, 4 * 32));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 8 * 32, 10 * 32));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 12 * 32, 8 * 32));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 16 * 32, 20 * 32));
+	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 5 * 32, 20 * 32));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
 
 	Radar radar(&Resources, entity, 300-32,0);
 
@@ -115,25 +195,26 @@ int main()
 		{
 			//Logic Code Goes Here
 			explosion->Position(sf::Vector2f(-1000, -1000));
-			explosion->Update(timeSinceLastUpdate);
+			explosion->Update(timeSinceLastUpdate, &solidObjects);
 			for (int i = 0; i < spaceTiles.size(); i++)
 			{
 				spaceTiles.at(i)->Update();
 			}
+			border->Update();
 			for (int i = 0; i < entity->size(); i++)
 			{
-				entity->at(i)->Update(timeSinceLastUpdate);
+				entity->at(i)->Update(timeSinceLastUpdate, &solidObjects);
 			}
 			radar.Update();
 			//No More
 
 			window->clear();
 			//Display Code Goes Here
-			for (int i = 0; i < space.size(); i++)
+			for (int i = 0; i < world.size(); i++)
 			{
-				for (int j = 0; j < space.at(i).size(); j++)
+				for (int j = 0; j < world.at(i).size(); j++)
 				{
-					space.at(i).at(j)->Draw(*window);
+					world.at(i).at(j)->Draw(*window);
 				}
 			}
 			for (int i = 0; i < entity->size(); i++)

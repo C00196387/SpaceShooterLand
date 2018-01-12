@@ -7,7 +7,7 @@ class Node
 {
 public:
 
-	Node(int xholder, int yholder, bool solidholder) 
+	Node(int xholder, int yholder, bool solidholder)
 	{
 		x = xholder;
 		y = yholder;
@@ -30,12 +30,17 @@ public:
 class Graph
 {
 public:
-	Graph(){}
-	~Graph(){}
+	Graph() {}
+	~Graph() {}
 
 	void AddNode(int x, int y, bool solid)
 	{
-		m_graph.push_back(new Node(x,y,solid));
+		m_graph.push_back(new Node(x, y, solid));
+	}
+
+	void ForceModifyNode(int x, int y, bool solid)
+	{
+		GetNode(x, y)->solid = solid;
 	}
 
 	void GenerateGraph()
@@ -60,24 +65,21 @@ public:
 			for (int j = 0; j <= height; j++)
 			{
 				Node * holder = GetNode(i, j);
-				if (!holder->solid)
+				if (holder->x - 1 >= 0 && !GetNode(i - 1, j)->solid)
 				{
-					if (holder->x - 1 >= 0 && !GetNode(i - 1, j)->solid)
-					{
-						holder->arc.push_back(GetNode(i - 1, j));
-					}
-					if (holder->y - 1 >= 0 && !GetNode(i, j - 1)->solid)
-					{
-						holder->arc.push_back(GetNode(i, j - 1));
-					}
-					if (holder->x + 1 < width && !GetNode(i + 1, j)->solid)
-					{
-						holder->arc.push_back(GetNode(i + 1, j));
-					}
-					if (holder->y + 1 < height && !GetNode(i, j + 1)->solid)
-					{
-						holder->arc.push_back(GetNode(i, j + 1));
-					}
+					holder->arc.push_back(GetNode(i - 1, j));
+				}
+				if (holder->y - 1 >= 0 && !GetNode(i, j - 1)->solid)
+				{
+					holder->arc.push_back(GetNode(i, j - 1));
+				}
+				if (holder->x + 1 < width && !GetNode(i + 1, j)->solid)
+				{
+					holder->arc.push_back(GetNode(i + 1, j));
+				}
+				if (holder->y + 1 < height && !GetNode(i, j + 1)->solid)
+				{
+					holder->arc.push_back(GetNode(i, j + 1));
 				}
 			}
 		}
@@ -157,6 +159,10 @@ public:
 					{
 						neighbours.front()->weight = distC;
 						neighbours.front()->previous = pq.top();
+						if (neighbours.front() == dest)
+						{
+							complete = true;
+						}
 					}
 					if (!neighbours.front()->marked)
 					{
@@ -192,7 +198,8 @@ private:
 
 	class SearchCostComparer {
 	public:
-		bool operator()(Node * n1, Node * n2) {
+		bool operator()(Node * n1, Node * n2) 
+		{
 			int p1 = n1->weight;
 			int p2 = n2->weight;
 			return p1 + n1->heuristic > p2 + n2->heuristic;

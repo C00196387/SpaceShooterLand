@@ -29,7 +29,7 @@ Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, 
 	m_speed = 0;
 }
 
-void Worker::Update(sf::Time t)
+void Worker::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_pathRenewTimer <= 0)
 	{
@@ -55,8 +55,26 @@ void Worker::Update(sf::Time t)
 
 	seekAndWander(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
 
-	for (int i = 0; i < m_entity->size(); i++)
+	for (int i = 0; i < s->size(); i++)
 	{
+		sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+		tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
+		sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
+		sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+
+		sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+		tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
+		sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
+		sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+		if (tempRect1.intersects(tempRect2))
+		{
+			m_velocity.x = 0;
+
+		}
+		else if (tempRect3.intersects(tempRect4))
+		{
+			m_velocity.y = 0;
+		}
 
 	}
 

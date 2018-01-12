@@ -39,7 +39,7 @@ Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * ex
 	m_speed = 0;
 }
 
-void Predator::Update(sf::Time t)
+void Predator::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
 	{
@@ -93,7 +93,7 @@ void Predator::Update(sf::Time t)
 			if (m_entity->at(i)->Type() == "Player")
 			{
 				playerIndex = i;
-				if (DistanceFormula(m_entity->at(i)->Position(), m_position) < 32 * 5)
+				if (DistanceFormula(m_entity->at(i)->Position(), m_position) < 32 * 3)
 				{
 					attackPlayer = true;
 					break;
@@ -153,7 +153,7 @@ void Predator::Update(sf::Time t)
 		if (m_path.size() > 0)
 		{
 			sf::Rect<int> holderThis = sf::Rect<int>(m_position.x - 16, m_position.y - 16, 32, 32);
-			sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32) - 24, (m_path.back().y * 32) - 24, 48, 48);
+			sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32), (m_path.back().y * 32), 16, 16);
 
 			if (holderThis.intersects(holderOther))
 			{
@@ -162,7 +162,7 @@ void Predator::Update(sf::Time t)
 					m_path.pop_back();
 				}
 			}
-			Pursue(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
+			Pursue(sf::Vector2f((m_path.back().x * 32)+16, (m_path.back().y * 32)+16), t);
 		}
 
 		for (int i = 0; i < m_entity->size(); i++)
@@ -178,23 +178,41 @@ void Predator::Update(sf::Time t)
 				tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
 				sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
 				sf::Rect<int> tempRect4 = sf::Rect<int>(m_entity->at(i)->Position().x - 16, m_entity->at(i)->Position().y - 16, 32, 32);
-				if (tempRect1.intersects(tempRect2))
+				if (tempRect1.intersects(tempRect2) && m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
 				{
 					m_velocity.x = (m_velocity.x * -1) / 2;
-					if (m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
-					{
-						m_entity->at(i)->m_velocity.x = (m_velocity.x / 2) * -1;
-					}
+					m_entity->at(i)->m_velocity.x = (m_velocity.x / 2) * -1;
+
 				}
-				else if (tempRect3.intersects(tempRect4))
+				else if (tempRect3.intersects(tempRect4) && m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
 				{
 					m_velocity.y = (m_velocity.y * -1) / 2;
-					if (m_entity->at(i)->Type() != "Missile" && m_entity->at(i)->Type() != "Nest")
-					{
-						m_entity->at(i)->m_velocity.y = (m_velocity.y / 2) * -1;
-					}
+					m_entity->at(i)->m_velocity.y = (m_velocity.y / 2) * -1;
+
 				}
 			}
+		}
+		for (int i = 0; i < s->size(); i++)
+		{
+			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
+			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
+			sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+
+			sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
+			sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
+			sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+			if (tempRect1.intersects(tempRect2))
+			{
+				m_velocity.x = (m_velocity.x * -1) / 2;
+
+			}
+			else if (tempRect3.intersects(tempRect4))
+			{
+				m_velocity.y = (m_velocity.y * -1) / 2;
+			}
+
 		}
 
 		m_position = m_position + (m_velocity * (float)t.asSeconds());
@@ -202,7 +220,7 @@ void Predator::Update(sf::Time t)
 		m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
 
 		m_cannon->Position(m_position.x, m_position.y);
-		m_cannon->Update(t);
+		m_cannon->Update(t, s);
 
 		m_sprite.GetSprite()->setPosition(m_position);
 		m_sprite.Update();

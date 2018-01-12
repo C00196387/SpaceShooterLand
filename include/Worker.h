@@ -11,7 +11,7 @@ public:
 	Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, int y);
 	~Worker() {};
 
-	void Update(sf::Time t);
+	void Update(sf::Time t, std::vector<Structure*>* s);
 	void Draw(sf::RenderWindow & r);
 	std::string Type() { return m_type; };
 	sf::Vector2f Position() { return m_position; };

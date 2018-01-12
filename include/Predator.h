@@ -12,7 +12,7 @@ public:
 	Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, Graph * g, int x, int y);
 	~Predator() {};
 
-	void Update(sf::Time t);
+	void Update(sf::Time t, std::vector<Structure*>* s);
 	void Draw(sf::RenderWindow & r);
 	std::string Type() { return m_type; };
 	sf::Vector2f Position() { return m_position; };
@@ -23,8 +23,8 @@ private:
 
 	const float m_maxspeed = 50;
 	const float m_maxAcceleration = 25.0f;
-	const float m_radiusStop = 16;
-	const float m_radiusSlow = 128;
+	const float m_radiusStop = 0;
+	const float m_radiusSlow = 0;
 	const float m_maxaccel = 10;
 
 	bool m_seekingPlayer;

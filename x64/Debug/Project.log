@@ -1,9 +1,40 @@
-﻿  game.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+﻿  Bullet.cpp
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(133): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(151): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(124): warning C4101: 'pTemp': unreferenced local variable
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(84): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(132): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\bullet.cpp(133): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  game.cpp
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(133): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(151): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(124): warning C4101: 'pTemp': unreferenced local variable
 c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\game.cpp(28): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\game.cpp(29): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Space.cpp
+  Block.cpp
+  Worker.cpp
+  Radar.cpp
+  Predator.cpp
+  Player.cpp
+  Nest.cpp
+  Missile.cpp
+  Explosion.cpp
+  Cannon.cpp
   Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.exe
   Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.pdb (Partial PDB)

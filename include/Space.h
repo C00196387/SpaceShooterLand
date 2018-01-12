@@ -9,7 +9,7 @@ public:
 	Space(std::vector<ManagedSprite*>* sprite, int x, int y);
 	~Space() {};
 
-	void Update(sf::Time t);
+	void Update(sf::Time t) {}
 	void Draw(sf::RenderWindow & r);
 
 	bool Solid() { return m_solid; };

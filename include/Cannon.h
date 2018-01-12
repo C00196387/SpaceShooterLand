@@ -15,7 +15,7 @@ public:
 	Cannon() {};
 	Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y, std::string source);
 	~Cannon() {}
-	void Update(sf::Time t);
+	void Update(sf::Time t, std::vector<Structure*>* s);
 	void Draw(sf::RenderWindow & r);
 	sf::Vector2f Position() { return m_position; };
 	void Position(float x, float y) { m_position.x = x; m_position.y = y; };

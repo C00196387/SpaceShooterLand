@@ -34,18 +34,41 @@ Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 }
 
-void Player::Update(sf::Time t)
+void Player::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	Controls();
 
 	m_velocity.x = m_speed * cos(m_orientation / (180 / 3.14159265));
 	m_velocity.y = m_speed * sin(m_orientation / (180 / 3.14159265));
 
+	for (int i = 0; i < s->size(); i++)
+	{
+		sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+		tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
+		sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
+		sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+
+		sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+		tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
+		sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
+		sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+		if (tempRect1.intersects(tempRect2))
+		{
+			m_velocity.x = 0;
+
+		}
+		else if (tempRect3.intersects(tempRect4))
+		{
+			m_velocity.y = 0;
+		}
+
+	}
+
 	m_position.x = m_position.x + m_velocity.x * t.asSeconds();
 	m_position.y = m_position.y + m_velocity.y * t.asSeconds();
 
 	m_cannon->Position(m_position.x, m_position.y);
-	m_cannon->Update(t);
+	m_cannon->Update(t, s);
 
 	m_camera->setCenter(m_position.x, m_position.y);
 
