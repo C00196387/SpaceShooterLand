@@ -15,6 +15,7 @@
 #include "Radar.h"
 #include "Block.h"
 #include "Sweeper.h"
+#include "PowerUp.h"
 
 //! main cpp
 /*! deals with the game loop and sfml windows loads all the textures and creates the astar grid with nodes*/
@@ -24,7 +25,7 @@ int main()
 
 	sf::View *mainCamera = new sf::View(sf::FloatRect(0, 0, 600, 600));
 	mainCamera->setCenter(300, 300);
-	mainCamera->zoom(0.5);
+	mainCamera->zoom(2.5);
 	sf::View hudCamera = sf::View(sf::FloatRect(0, 0, 600, 600));
 	hudCamera.zoom(0.5);
 	hudCamera.setCenter(150, 150);
@@ -56,6 +57,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\astroid_wall.png", "a_wall");
 	Resources.LoadTexture(".\\resources\\astroid_floor.png", "a_floor");
 	Resources.LoadTexture(".\\resources\\Winner.png", "win");
+	Resources.LoadTexture(".\\resources\\Power_Up.png", "powerup");
 
 	ManagedSprite win(Resources.GetTexture("win"), 16, 16);
 	win.SetScale(10);
@@ -172,7 +174,7 @@ int main()
 	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, -1000, -1000));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 4 * 32, 4 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 8 * 32, 10 * 32));
-	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 12 * 32, 8 * 32));
+	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 12 * 32, 8 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 16 * 32, 20 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 5 * 32, 20 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 9 * 32));
@@ -193,6 +195,11 @@ int main()
 	entity->push_back(new Worker(&Resources, entity, solidMap, 11 * 32, 6 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 12 * 32, 5 * 32));
 	entity->push_back(new Sweeper(&Resources, entity, explosion, solidMap, 2.5 * 32, 10 * 32));
+	entity->push_back(new PowerUp(&Resources, entity, 18 * 32, 10 * 32));
+	entity->push_back(new PowerUp(&Resources, entity, 12 * 32, 4 * 32));
+	entity->push_back(new PowerUp(&Resources, entity, 21 * 32, 21 * 32));
+	entity->push_back(new PowerUp(&Resources, entity, 4 * 32, 4 * 32));
+	entity->push_back(new PowerUp(&Resources, entity, 12 * 32, 12 * 32));
 
 	Radar radar(&Resources, entity, 300-32,0);
 

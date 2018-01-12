@@ -34,6 +34,8 @@ public:
 	std::string m_type;
 	bool m_alive;
 
+	int m_fireRate;
+
 	int m_score;
 
 	int m_health;

@@ -24,11 +24,13 @@ Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 	m_type = "Player";
 
 	m_cannon = new Cannon(r, e, explosion, x, y, "Player");
-	m_cannon->FireRate(25);
 
 	m_health = 10;
 
 	m_alive = true;
+
+	m_fireRate = 25;
+	m_cannon->FireRate(m_fireRate);
 
 	m_camera = cam;
 
@@ -38,6 +40,7 @@ void Player::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
 	{
+		m_cannon->FireRate(m_fireRate);
 		Controls();
 
 		m_velocity.x = m_speed * cos(m_orientation / (180 / 3.14159265));

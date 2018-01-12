@@ -129,6 +129,7 @@
     <ClInclude Include="include\Missile.h" />
     <ClInclude Include="include\Nest.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\PowerUp.h" />
     <ClInclude Include="include\Predator.h" />
     <ClInclude Include="include\Radar.h" />
     <ClInclude Include="include\ResourceManager.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="src\Missile.cpp" />
     <ClCompile Include="src\Nest.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PowerUp.cpp" />
     <ClCompile Include="src\Predator.cpp" />
     <ClCompile Include="src\Radar.cpp" />
     <ClCompile Include="src\Space.cpp" />
