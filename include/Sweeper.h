@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Worker.h"
 
+//!Sweeper
+/*! Hunts for civilians and wisks them away in his mimicing shuttle.*/
 class Sweeper : public Entity
 {
 public:

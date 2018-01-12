@@ -16,7 +16,8 @@ Cannon::Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 	m_sprite.GetSprite()->setOrigin(8, 8);
 
 	m_source = source;
-
+	//! for loop for the bullets in a vector
+	/*! pushes 50 bullet objects to a vector to use at once and each bullet is recycled*/
 	for (int i = 0; i < 50; i++)
 	{
 		m_bullets.push_back(Bullet(r, e, explosion, m_position.x, m_position.y, source));
@@ -30,6 +31,8 @@ Cannon::Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 void Cannon::Update(sf::Time t, std::vector<Structure*>* s)
 {
+	//!Cannon that follows the mouse and Fires in the direction given!
+	/*! Cannon rotates toward the mouse or player, depending on the user, and shoots in the direction it's facing.*/
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_source == "Player" && m_fireTimer <= 0)
 	{
 		for (int i = 0; i < m_bullets.size(); i++)
@@ -46,6 +49,7 @@ void Cannon::Update(sf::Time t, std::vector<Structure*>* s)
 	{
 		m_fireTimer--;
 	}
+
 	if (m_source == "Player")
 	{
 		m_dx = m_mouse.x - (m_position.x);
@@ -60,8 +64,8 @@ void Cannon::Update(sf::Time t, std::vector<Structure*>* s)
 
 void Cannon::Draw(sf::RenderWindow & r)
 {
-	m_mouse.x = (sf::Mouse::getPosition(r).x - 300)*10;
-	m_mouse.y = (sf::Mouse::getPosition(r).y - 300)*10;
+	m_mouse.x = (sf::Mouse::getPosition(r).x - 300)*100;
+	m_mouse.y = (sf::Mouse::getPosition(r).y - 300)*100;
 	m_sprite.GetSprite()->setPosition(m_position);
 	m_sprite.GetSprite()->setRotation(m_orientation);
 	for (int i = 0; i < m_bullets.size(); i++)
@@ -71,6 +75,8 @@ void Cannon::Draw(sf::RenderWindow & r)
 	r.draw(*m_sprite.GetSprite());
 }
 
+//!ForceFire
+/*! Forces bullet to be fired from cannon.*/
 void Cannon::ForceFire()
 {
 	if (m_fireTimer <= 0)

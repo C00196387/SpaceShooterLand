@@ -5,7 +5,8 @@
 #include "ResourceManager.h"
 #include "ManagedSprite.h"
 
-//All moving objects
+//!Structure
+/*! Parent class of all stationary objects.*/
 class Structure
 {
 public:

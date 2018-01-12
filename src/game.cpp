@@ -16,6 +16,8 @@
 #include "Block.h"
 #include "Sweeper.h"
 
+//! main cpp
+/*! deals with the game loop and sfml windows loads all the textures and creates the astar grid with nodes*/
 int main()
 {
 	sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(600, 600), "SFML works!");
@@ -53,6 +55,10 @@ int main()
 	Resources.LoadTexture(".\\resources\\Border.png", "border");
 	Resources.LoadTexture(".\\resources\\astroid_wall.png", "a_wall");
 	Resources.LoadTexture(".\\resources\\astroid_floor.png", "a_floor");
+	Resources.LoadTexture(".\\resources\\Winner.png", "win");
+
+	ManagedSprite win(Resources.GetTexture("win"), 16, 16);
+	win.SetScale(10);
 
 	std::vector<Entity*> * entity = new std::vector<Entity*>();
 
@@ -171,21 +177,27 @@ int main()
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 5 * 32, 20 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 9 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 5 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 4 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 3 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 3 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 6 * 32, 23 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 7 * 32, 2 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 8 * 32, 2 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 9 * 32, 1 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 10 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 7 * 32, 3 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 8 * 32, 3 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 9 * 32, 6 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 10 * 32, 5 * 32));
 	entity->push_back(new Worker(&Resources, entity, solidMap, 11 * 32, 6 * 32));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 12 * 32, 2 * 32));
-	entity->push_back(new Sweeper(&Resources, entity, explosion, solidMap, 5 * 32, 10 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 12 * 32, 5 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 20 * 32, 10 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 8 * 32, 3 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 3 * 32, 8 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 10 * 32, 5 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 11 * 32, 6 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 12 * 32, 5 * 32));
+	entity->push_back(new Sweeper(&Resources, entity, explosion, solidMap, 2.5 * 32, 10 * 32));
 
 	Radar radar(&Resources, entity, 300-32,0);
 
 	solidMap->Path(0, 0, 10, 10);
-	entity->at(0)->m_position = sf::Vector2f(75, 75);
+	entity->at(0)->m_position = sf::Vector2f(20*32, 10 * 32);
 
 	//FPS stuff
 	sf::Clock clock;
@@ -215,9 +227,12 @@ int main()
 				spaceTiles.at(i)->Update();
 			}
 			border->Update();
-			for (int i = 0; i < entity->size(); i++)
+			if (entity->at(0)->m_score < 10)
 			{
-				entity->at(i)->Update(timeSinceLastUpdate, &solidObjects);
+				for (int i = 0; i < entity->size(); i++)
+				{
+					entity->at(i)->Update(timeSinceLastUpdate, &solidObjects);
+				}
 			}
 			radar.Update();
 			//No More
@@ -237,6 +252,10 @@ int main()
 			}
 			window->setView(hudCamera);
 			radar.Draw(*window);
+			if (entity->at(0)->m_score >= 10)
+			{
+				window->draw(*win.GetSprite());
+			}
 			//No More
 			window->display();
 			window->setView(*mainCamera);

@@ -1,7 +1,5 @@
 #include "Predator.h"
 
-
-
 Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, Graph * g, int x, int y)
 {
 	m_position.x = x;
@@ -39,10 +37,14 @@ Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * ex
 	m_speed = 0;
 }
 
+//!Predator Update
+/*! Predator Update is the largest and most complicated function.*/
 void Predator::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
 	{
+		//!Update Path and Get Slaves
+		/*! Predator hunts down the player using ASTAR, when within a certain distance, they use pursue upon the player. If it comes in contact with other predators, it will be either given a leader or get a slave. Form a + around the player when given the chance.*/
 		if (m_pathRenewTimer <= 0 && !m_isSlave)
 		{
 			for (int i = 0; i < m_entity->size(); i++)
@@ -84,8 +86,8 @@ void Predator::Update(sf::Time t, std::vector<Structure*>* s)
 		{
 			m_pathRenewTimer--;
 		}
-
-		//Formation Code
+		//!Formation
+		/*! Achieves formation as given above. Only allows 4 to be in a squad. Creates a + shape, to surround the player.*/
 		int playerIndex = -1;
 		bool attackPlayer = false;
 		for (int i = 0; i < m_entity->size(); i++)
@@ -150,6 +152,8 @@ void Predator::Update(sf::Time t, std::vector<Structure*>* s)
 			m_cannon->ForceFire();
 		}
 
+		//!Pop Path as they cross points
+		/*! Every point they cross is popped from their path, in which they progress forward.*/
 		if (m_path.size() > 0)
 		{
 			sf::Rect<int> holderThis = sf::Rect<int>(m_position.x - 16, m_position.y - 16, 32, 32);
@@ -257,6 +261,8 @@ void Predator::Draw(sf::RenderWindow & r)
 	}
 }
 
+//!Pursue
+/*! Pursues a point, slowing as it gets close. Used for more accurate movements.*/
 void Predator::Pursue(sf::Vector2f otherLoc, sf::Time t)
 {
 	float timetotarget = 0.05;

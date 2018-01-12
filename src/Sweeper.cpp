@@ -31,6 +31,8 @@ Sweeper::Sweeper(ResourceManager * r, std::vector<Entity*>* e, Explosion * explo
 
 Sweeper::~Sweeper(){}
 
+//!Update
+/*! Hunts civilians and abducts them. If killed, offers player all of the civilians.*/
 void Sweeper::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
@@ -45,6 +47,7 @@ void Sweeper::Update(sf::Time t, std::vector<Structure*>* s)
 					m_entity->at(i)->m_alive = false;
 					m_entity->at(i)->m_position.x = -1000;
 					m_entity->at(i)->m_position.y = -1000;
+					m_entity->at(i)->m_health = 0;
 
 					std::cout << "captured worker" + m_countWorkers << std::endl;
 					break;
@@ -151,6 +154,8 @@ void Sweeper::Draw(sf::RenderWindow & r)
 	}
 }
 
+//!Pursue Worker
+/*! Pursues the worker nearby.*/
 void Sweeper::PursueWorker(sf::Vector2f otherLocation, sf::Time t)
 {
 	float timetotarget = 0.01;
@@ -208,6 +213,8 @@ void Sweeper::PursueWorker(sf::Vector2f otherLocation, sf::Time t)
 	}
 }
 
+//!Flee
+/*! Flees from player.*/
 void Sweeper::Flee(sf::Time t, sf::Vector2f otherLocation)
 {
 	float timetotarget = 0.01;

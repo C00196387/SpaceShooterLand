@@ -2,7 +2,8 @@
 #define MANAGEDSPRITE_H
 
 #include "stdafx.h"
-
+//! maneged sprite class
+/*! Managed sprite is a derivative of the sfml sprite class, but manages animation and scale.*/
 class ManagedSprite
 {
 public:

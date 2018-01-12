@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, sf::View * cam, int x, int y)
 {
 	m_position.x = x;
@@ -59,7 +57,6 @@ void Player::Update(sf::Time t, std::vector<Structure*>* s)
 			if (tempRect1.intersects(tempRect2))
 			{
 				m_velocity.x = 0;
-
 			}
 			else if (tempRect3.intersects(tempRect4))
 			{
@@ -74,6 +71,7 @@ void Player::Update(sf::Time t, std::vector<Structure*>* s)
 				if (DistanceFormula(m_entity->at(i)->Position(), m_position) < 32)
 				{
 					m_entity->at(i)->m_alive = false;
+					m_entity->at(i)->m_health = 0;
 					m_entity->at(i)->m_position.x = -1000;
 					m_entity->at(i)->m_position.y = -1000;
 					m_score++;
@@ -124,6 +122,8 @@ void Player::Draw(sf::RenderWindow & r)
 	}
 }
 
+//!Controls
+/*! Controls the player's inputs, applying them. Player moves like a tank.*/
 void Player::Controls()
 {
 	bool isAccelerateOn = false;

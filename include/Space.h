@@ -2,7 +2,8 @@
 #define SPACE_H
 
 #include "Structure.h"
-
+//!Space class
+/*! this creates the randomly generated background to make the world look unique*/
 class Space : public Structure
 {
 public:

@@ -7,7 +7,8 @@
 #include "Structure.h"
 #include "ManagedSprite.h"
 
-//All moving objects
+//!Entity
+/*! Parent class of all moving objects*/
 class Entity
 {
 public:

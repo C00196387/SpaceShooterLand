@@ -1,5 +1,7 @@
 #include "Space.h"
 
+//!Space
+/*! Floor like, animated tile.*/
 Space::Space(std::vector<ManagedSprite*>* sprite, int x, int y)
 {
 	m_spaceTile = rand() % 3;

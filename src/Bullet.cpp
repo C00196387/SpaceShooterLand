@@ -25,10 +25,10 @@ Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 	m_explosion = explosion;
 
-	m_type = "Bullet";
+	m_type = "Bullet"; 
 	m_rotation = 0;
 	m_alive = false;
-	m_health = 1;
+	m_health = 1; 
 }
 
 void Bullet::Update(sf::Time t, std::vector<Structure*>* s)
@@ -79,6 +79,8 @@ void Bullet::Update(sf::Time t, std::vector<Structure*>* s)
 
 		for (int i = 0; i < m_entity->size(); i++)
 		{
+			//!Collision Detection managment for bullets.
+			/*! Each bullet controls the damage the player or enemy takes, based on the source.*/
 			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 6, m_position.y - 6);
 			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 12, 12);
 			sf::Rect<int> tempRect2 = sf::Rect<int>(m_entity->at(i)->Position().x - 16, m_entity->at(i)->Position().y - 16, 32, 32);
@@ -134,7 +136,8 @@ void Bullet::Draw(sf::RenderWindow & r)
 		m_explosion->Draw(r);
 	}
 }
-
+//!Fire
+/*! Reuses bullets to decrease load during runtime.*/
 void Bullet::Fire(int x, int y, float speed, float direction)
 {
 	m_position.x = x;

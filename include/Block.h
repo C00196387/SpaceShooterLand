@@ -1,6 +1,8 @@
 #ifndef BORDER_H
 #define BORDER_H
 
+//!Block
+/*! Child of structure abstract class, used to create generic tiles.*/
 #include "Structure.h"
 class Block : public Structure
 {

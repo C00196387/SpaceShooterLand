@@ -12,6 +12,8 @@ ManagedSprite::ManagedSprite(sf::Texture * t, int sizeX, int sizeY)
 
 void ManagedSprite::Update()
 {
+	//!Animate
+	/*! If the sprite is animating it cycles through the animation cycle forward and backwards.*/
 	if (m_animate)
 	{
 		if (m_timer <= 0)
@@ -47,5 +49,7 @@ void ManagedSprite::Update()
 			m_timer--;
 		}
 	}
+	//!Texture Rect
+	/*! Cuts and displays a sprite based on a given rectangle.*/
 	m_sprite->setTextureRect(sf::IntRect(m_state * m_dimensions.x, 0, m_dimensions.x, m_dimensions.y));
 }

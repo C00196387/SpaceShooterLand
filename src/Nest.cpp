@@ -1,7 +1,8 @@
 #include "Nest.h"
 
 
-
+//!Nest
+/*! Produces aliens to attack the player.*/
 Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, Graph * g, int x, int y)
 {
 	m_position.x = x;
@@ -25,6 +26,8 @@ Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion,
 
 	m_health = 5;
 
+	//!Initialize Spawn
+	/*! Creates it's children pre runtime to prevent delay.*/
 	for (int i = 0; i < 2; i++)
 	{
 		m_predators.push_back(new Predator(r, e, explosion, g, -1000, -1000));
@@ -39,6 +42,8 @@ Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion,
 	}
 }
 
+//!Update - Spawn
+/*! Spawns it's units. A missile every 5 seconds and a predator every 10 seconds.*/
 void Nest::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)

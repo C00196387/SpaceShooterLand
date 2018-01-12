@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 
+//!Node
+/*! Individual piece of graph.*/
 class Node
 {
 public:
@@ -27,22 +29,23 @@ public:
 
 };
 
+//!Graph
+/*! Creates a graph that manages pathfinding.*/
 class Graph
 {
 public:
 	Graph() {}
 	~Graph() {}
 
+	//!Add Node
+	/*! Adds a node to the vector.*/
 	void AddNode(int x, int y, bool solid)
 	{
 		m_graph.push_back(new Node(x, y, solid));
 	}
 
-	void ForceModifyNode(int x, int y, bool solid)
-	{
-		GetNode(x, y)->solid = solid;
-	}
-
+	//!Generate Graph
+	/*! Generates a graph with existing nodes, giving every node with an adjacent non-solid node neighbours it can path between.*/
 	void GenerateGraph()
 	{
 		int width = 0;
@@ -88,6 +91,8 @@ public:
 
 	}
 
+	//!GetNode
+	/*! Gets the node.*/
 	Node* GetNode(int x, int y)
 	{
 		for (int i = 0; i < m_graph.size(); i++)
@@ -101,6 +106,9 @@ public:
 		return m_graph.at(0);
 	}
 
+
+	//!Path
+	/*! AStar is used here. It uses a priority queue to shift through each node. Upon reaching the end node at any stage, it immedietly finishes. Does not give best result but gives fastest!*/
 	std::vector<Node> Path(int x, int y, int x2, int y2)//X + Y = Starting position, X2+Y2 = End position
 	{
 		std::priority_queue<Node *, std::vector<Node*>, SearchCostComparer> pq;
@@ -161,7 +169,7 @@ public:
 						neighbours.front()->previous = pq.top();
 						if (neighbours.front() == dest)
 						{
-							//complete = true;
+							complete = true;
 						}
 					}
 					if (!neighbours.front()->marked)
@@ -197,6 +205,8 @@ public:
 
 private:
 
+	//!Search Cost Comparer
+	/*! Compares the nodes against one another.*/
 	class SearchCostComparer {
 	public:
 		bool operator()(Node * n1, Node * n2) 

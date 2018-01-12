@@ -4,7 +4,8 @@
 #include "Entity.h"
 #include "Graph.h"
 #include "Player.h"
-
+//!predator class
+/*!class that uses seek on its entities to follow the player attack the player in formation and destroy the player*/
 class Predator :
 	public Entity
 {
@@ -38,7 +39,8 @@ private:
 	Graph * m_graph;
 
 	int m_pathRenewTimer;
-
+	//!Pursue behavior
+	/*! find the player creates a path using a-star to go to the player using the steering code also*/
 	void Pursue(sf::Vector2f otherLoc, sf::Time t);
 
 	float GetMagnitude(sf::Vector2f v)

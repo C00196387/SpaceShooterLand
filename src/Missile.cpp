@@ -1,7 +1,8 @@
 #include "Missile.h"
 
 
-
+//!Graph
+/*! Creates a graph that manages pathfinding.*/
 Missile::Missile(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y)
 {
 	m_position.x = x;
@@ -26,7 +27,7 @@ Missile::Missile(ResourceManager * r, std::vector<Entity*> * e, Explosion * expl
 
 	m_explosion = explosion;
 
-	m_type = "Missile";
+	m_type = "Missile";/*!<type Missile to ID*/
 	m_rotation = 0;
 	m_alive = false;
 	m_health = 1;
@@ -138,6 +139,8 @@ void Missile::Fire(int x, int y)
 	m_health = 1;
 }
 
+//!Seek
+/*! Seeks a down target based on straightline distance. Modified to always assure maximum speed and minimum control!*/
 void Missile::Seek(sf::Vector2f otherLoc, sf::Time t)
 {
 	sf::Vector2f m_linear = otherLoc - m_position;

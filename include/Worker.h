@@ -4,7 +4,8 @@
 #include "Entity.h"
 #include "Graph.h"
 #include "Player.h"
-
+//!worker class
+/*! worker that uses wnader behavior and gets picked up by sweeper or player*/
 class Worker : public Entity
 {
 public:
@@ -36,7 +37,9 @@ private:
 	std::vector<Node> m_path;
 
 	int m_pathRenewTimer;
-
+	//! seekwander
+	/*! \fn seekAndWander()
+	uses something similar to seek to generate a path and then goes to through that path and chooses a new path and keeps doing this to make it look like it is randomly chooses directions to go in*/
 	void seekAndWander(sf::Vector2f otherLoc, sf::Time t);
 
 	float GetMagnitude(sf::Vector2f v)

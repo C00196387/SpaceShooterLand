@@ -1,7 +1,5 @@
 #include "Radar.h"
 
-
-
 Radar::Radar(ResourceManager * r, std::vector<Entity*> * e, int x, int y)
 {
 	m_sprites.push_back(ManagedSprite(r->GetTexture("radar"), 16, 16));
@@ -27,6 +25,8 @@ Radar::Radar(ResourceManager * r, std::vector<Entity*> * e, int x, int y)
 }
 
 
+//!Update Radar
+/*! Tracks all civilian ships. Points to them on it's radar.*/
 void Radar::Update()
 {
 	n =  false;
@@ -50,7 +50,7 @@ void Radar::Update()
 
 	for (int i = 0; i < m_entity->size(); i++)
 	{
-		if (m_entity->at(i)->Type() == "Worker" && m_entity->at(i)->m_alive)
+		if (m_entity->at(i)->Type() == "Worker" && m_entity->at(i)->m_alive || m_entity->at(i)->Type() == "Worker" && m_entity->at(i)->m_health > 0 || m_entity->at(i)->Type() == "Worker" && m_entity->at(i)->m_position.x >= -800)
 		{
 			int holder = atan2(m_entity->at(i)->Position().x - m_entity->at(playerId)->Position().x, m_entity->at(i)->Position().y - m_entity->at(playerId)->Position().y) * 180 / 3.14;
 			if (holder > 0)

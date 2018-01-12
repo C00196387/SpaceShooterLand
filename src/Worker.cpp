@@ -1,9 +1,13 @@
 #include "Worker.h"
 
 
-
+//!worker class
+/*! worker that uses wnader behavior and gets picked up by sweeper or player*/
 Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, int y)
 {
+	m_position.x = x;
+	m_position.y = y;
+
 	m_position.x = x;
 	m_position.y = y;
 
@@ -23,6 +27,7 @@ Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, 
 	m_sprite.AnimateOn();
 
 	m_alive = true;
+	m_health = 1;
 
 	m_type = "Worker";
 
@@ -31,6 +36,8 @@ Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, 
 	m_speed = 0;
 }
 
+//!Update
+/*! Moves randomly.*/
 void Worker::Update(sf::Time t, std::vector<Structure*>* s)
 {
 	if (m_alive)
@@ -62,12 +69,12 @@ void Worker::Update(sf::Time t, std::vector<Structure*>* s)
 
 		for (int i = 0; i < s->size(); i++)
 		{
-			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 16, m_position.y - 16);
 			tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
 			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
 			sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
 
-			sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 16, m_position.y - 16);
 			tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
 			sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
 			sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
@@ -104,7 +111,9 @@ void Worker::Draw(sf::RenderWindow & r)
 	m_sprite.GetSprite()->setRotation(m_orientation);
 	r.draw(*m_sprite.GetSprite());
 }
-
+//! seekwander
+/*! \fn seekAndWander()
+uses something similar to seek to generate a path and then goes to through that path and chooses a new path and keeps doing this to make it look like it is randomly chooses directions to go in*/
 void Worker::seekAndWander(sf::Vector2f otherLoc, sf::Time t)
 {
 	float timetotarget = 0.05;
