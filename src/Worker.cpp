@@ -66,7 +66,12 @@ void Worker::Update(sf::Time t)
 	{
 		m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
 	}
-
+	if (!m_alive)
+	{
+		m_position.x = -1000;
+		m_position.y = -1000;
+		m_sprite.GetSprite()->setPosition(m_position);
+	}
 	m_sprite.GetSprite()->setPosition(m_position);
 	m_sprite.Update();
 }

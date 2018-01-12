@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Predator.h"
 #include "Worker.h"
+#include "Sweeper.h"
 #include "Cannon.h"
 #include "Space.h"
 #include "Explosion.h"
@@ -31,7 +32,7 @@ int main()
 	Resources.LoadTexture(".\\resources\\Cannon.png", "cannon");
 	Resources.LoadTexture(".\\resources\\Bullet.png", "bullet");
 	Resources.LoadTexture(".\\resources\\Explosion.png", "explosion");
-
+	Resources.LoadTexture(".\\resources\\Sweeper.png", "sweeper");
 
 	std::vector<ManagedSprite*> spaceTiles;
 	spaceTiles.push_back(new ManagedSprite(Resources.GetTexture("space1"), 16, 16));
@@ -68,12 +69,13 @@ int main()
 
 	Explosion * explosion = new Explosion(&Resources, entity);
 
-	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 0, 0));
+	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 400, 250));
 	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 100, 220));
 	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 250, 380));
 	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 230, 270));
 	entity->push_back(new Predator(&Resources, entity, explosion, solidMap, 300, 250));
-	entity->push_back(new Worker(&Resources, entity, solidMap, 50, 100));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 500, 300));
+	entity->push_back(new Sweeper(&Resources, entity, explosion, solidMap, 300, 300, "Sweeper"));
 	std::cout << entity->size() << std::endl;
 
 	//FPS stuff

@@ -1,15 +1,9 @@
 ﻿  game.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\game.cpp(22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Explosion.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.exe
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.pdb (Partial PDB)
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\game.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Project.vcxproj -> C:\Users\jocon\Desktop\AISpaceShooter\SpaceShooterLand\x64\Debug\Project.exe
+  Project.vcxproj -> C:\Users\jocon\Desktop\AISpaceShooter\SpaceShooterLand\x64\Debug\Project.pdb (Partial PDB)

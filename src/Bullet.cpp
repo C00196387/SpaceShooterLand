@@ -64,6 +64,11 @@ void Bullet::Update(sf::Time t)
 						m_entity->at(i)->Health(m_entity->at(i)->Health()-1);
 						m_alive = false;
 					}
+					else if (m_entity->at(i)->Type() == "Sweeper")
+					{
+						m_entity->at(i)->Health(m_entity->at(i)->Health() - 1);
+						m_alive = false;
+					}
 				}
 			}
 		}
