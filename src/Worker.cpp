@@ -22,6 +22,8 @@ Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, 
 	m_sprite.SetAnimationStates(0, 1);
 	m_sprite.AnimateOn();
 
+	m_alive = true;
+
 	m_type = "Worker";
 
 	m_pathRenewTimer = 0;
@@ -31,58 +33,66 @@ Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, 
 
 void Worker::Update(sf::Time t, std::vector<Structure*>* s)
 {
-	if (m_pathRenewTimer <= 0)
+	if (m_alive)
 	{
-		for (int i = 0; i < m_entity->size(); i++)
+		if (m_pathRenewTimer <= 0)
 		{
-			m_path.clear();
-			m_path.push_back(Node(((rand() % 2) - 1) + (int)(m_position.x / 32), ((rand() % 2) - 1) + (int)(m_position.y / 32), false));
-			m_pathRenewTimer = 150;
+			for (int i = 0; i < m_entity->size(); i++)
+			{
+				m_path.clear();
+				m_path.push_back(Node(((rand() % 2) - 1) + (int)(m_position.x / 32), ((rand() % 2) - 1) + (int)(m_position.y / 32), false));
+				m_pathRenewTimer = 150;
+				break;
+			}
+		}
+		m_pathRenewTimer--;
+
+		sf::Rect<int> holderThis = sf::Rect<int>(m_position.x, m_position.y, 32, 32);
+		sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32) - 8, (m_path.back().y * 32) - 8, 48, 48);
+
+		if (holderThis.intersects(holderOther))
+		{
+			if (m_path.size() > 1)
+			{
+				m_path.pop_back();
+			}
+		}
+
+		seekAndWander(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
+
+		for (int i = 0; i < s->size(); i++)
+		{
+			sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
+			sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
+			sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+
+			sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
+			tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
+			sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
+			sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
+			if (tempRect1.intersects(tempRect2))
+			{
+				m_velocity.x = 0;
+
+			}
+			else if (tempRect3.intersects(tempRect4))
+			{
+				m_velocity.y = 0;
+			}
+
+		}
+
+		m_position = m_position + (m_velocity * (float)t.asSeconds());
+
+		if (GetMagnitude(m_velocity) > 0)
+		{
+			m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
 		}
 	}
-	m_pathRenewTimer--;
-
-	sf::Rect<int> holderThis = sf::Rect<int>(m_position.x, m_position.y, 32, 32);
-	sf::Rect<int> holderOther = sf::Rect<int>((m_path.back().x * 32) - 8, (m_path.back().y * 32) - 8, 48, 48);
-
-	if (holderThis.intersects(holderOther))
+	else
 	{
-		if (m_path.size() > 1)
-		{
-			m_path.pop_back();
-		}
-	}
-
-	seekAndWander(sf::Vector2f(m_path.back().x * 32, m_path.back().y * 32), t);
-
-	for (int i = 0; i < s->size(); i++)
-	{
-		sf::Vector2f tempPos = sf::Vector2f(m_position.x - 32, m_position.y - 32);
-		tempPos.x = tempPos.x + (m_velocity.x * (float)t.asSeconds());
-		sf::Rect<int> tempRect1 = sf::Rect<int>(tempPos.x, tempPos.y, 32, 32);
-		sf::Rect<int> tempRect2 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
-
-		sf::Vector2f tempPos2 = sf::Vector2f(m_position.x - 32, m_position.y - 32);
-		tempPos2.y = tempPos2.y + (m_velocity.y * (float)t.asSeconds());
-		sf::Rect<int> tempRect3 = sf::Rect<int>(tempPos2.x, tempPos2.y, 32, 32);
-		sf::Rect<int> tempRect4 = sf::Rect<int>(s->at(i)->m_position.x - 16, s->at(i)->m_position.y - 16, 32, 32);
-		if (tempRect1.intersects(tempRect2))
-		{
-			m_velocity.x = 0;
-
-		}
-		else if (tempRect3.intersects(tempRect4))
-		{
-			m_velocity.y = 0;
-		}
-
-	}
-
-	m_position = m_position + (m_velocity * (float)t.asSeconds());
-
-	if (GetMagnitude(m_velocity) > 0)
-	{
-		m_orientation = (atan2(m_velocity.y, m_velocity.x) * 180 / 3.14159265);
+		int x = 0;
 	}
 
 	m_sprite.GetSprite()->setPosition(m_position);

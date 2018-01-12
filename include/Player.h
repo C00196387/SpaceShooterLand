@@ -23,6 +23,7 @@ private:
 
 	void Controls();
 
+
 	sf::View * m_camera;
 	float m_speed;
 
@@ -31,6 +32,14 @@ private:
 	Cannon * m_cannon;
 
 	std::vector<Entity*> * m_entity;
+
+	float DistanceFormula(sf::Vector2f v1, sf::Vector2f v2)
+	{
+		float x = sqrt(((v2.x - v1.x)*(v2.x - v1.x)) + ((v2.y - v1.y)*(v2.y - v1.y)));
+
+		return x;
+	}
+
 
 };
 #endif

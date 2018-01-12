@@ -25,13 +25,13 @@ Nest::Nest(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion,
 
 	m_health = 5;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_predators.push_back(new Predator(r, e, explosion, g, -1000, -1000));
 		m_predators.back()->m_alive = false;
 		m_entity->push_back(m_predators.back());
 	}
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		m_missiles.push_back(new Missile(r, e, explosion,-1000, -1000));
 		m_missiles.back()->m_alive = false;

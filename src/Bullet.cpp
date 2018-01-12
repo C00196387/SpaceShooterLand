@@ -86,9 +86,17 @@ void Bullet::Update(sf::Time t, std::vector<Structure*>* s)
 			{
 				if (m_source == "Player")
 				{
-					if (m_entity->at(i)->Type() == "Predator" || m_entity->at(i)->Type() == "Nest")
+					if (m_entity->at(i)->Type() == "Predator" || m_entity->at(i)->Type() == "Nest" || m_entity->at(i)->Type() == "Sweeper" || m_entity->at(i)->Type() == "Missile")
 					{
 						m_entity->at(i)->Health(m_entity->at(i)->Health()-1);
+						m_health = 0;
+					}
+				}
+				if (m_source == "Enemy")
+				{
+					if (m_entity->at(i)->Type() == "Player")
+					{
+						m_entity->at(i)->Health(m_entity->at(i)->Health() - 1);
 						m_health = 0;
 					}
 				}

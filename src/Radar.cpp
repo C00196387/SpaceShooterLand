@@ -50,61 +50,59 @@ void Radar::Update()
 
 	for (int i = 0; i < m_entity->size(); i++)
 	{
-		if (m_entity->at(i)->Type() == "Worker")
+		if (m_entity->at(i)->Type() == "Worker" && m_entity->at(i)->m_alive)
 		{
-			if (DistanceFormula(m_position, m_entity->at(i)->Position()) < 32 * 10)
+			int holder = atan2(m_entity->at(i)->Position().x - m_entity->at(playerId)->Position().x, m_entity->at(i)->Position().y - m_entity->at(playerId)->Position().y) * 180 / 3.14;
+			if (holder > 0)
 			{
-				int holder = atan2(m_entity->at(i)->Position().x - m_entity->at(playerId)->Position().x, m_entity->at(i)->Position().y - m_entity->at(playerId)->Position().y) * 180 / 3.14;
-				if (holder > 0)
-				{
-					int temp = holder / 360;
-					holder = holder - (temp * 360);
-				}
-				else if (holder != 0)
-				{
-					int temp = holder / 360;
-					temp -= 1;
-					holder = holder - (temp * 360);
-				}
+				int temp = holder / 360;
+				holder = holder - (temp * 360);
+			}
+			else if (holder != 0)
+			{
+				int temp = holder / 360;
+				temp -= 1;
+				holder = holder - (temp * 360);
+			}
 
-				if (holder >= 0 && holder <= 21)
-				{
-					s = true;
-				}
-				else if (holder >= 22 && holder <= 67)
-				{
-					se = true;
-				}
-				else if (holder >= 68 && holder <= 112)
-				{
-					e = true;
-				}
-				else if (holder >= 113 && holder <= 158)
-				{
-					ne = true;
-				}
-				else if (holder >= 157 && holder <= 202)
-				{
-					n = true;
-				}
-				else if (holder >= 203 && holder <= 248)
-				{
-					nw = true;
-				}
-				else if (holder >= 249 && holder <= 292)
-				{
-					w = true;
-				}
-				else if (holder >= 293 && holder <= 337)
-				{
-					sw = true;
-				}
-				else
-				{
-					s = true;
-				}
+			if (holder >= 0 && holder <= 21)
+			{
+				s = true;
+			}
+			else if (holder >= 22 && holder <= 67)
+			{
+				se = true;
+			}
+			else if (holder >= 68 && holder <= 112)
+			{
+				e = true;
+			}
+			else if (holder >= 113 && holder <= 158)
+			{
+				ne = true;
+			}
+			else if (holder >= 157 && holder <= 202)
+			{
+				n = true;
+			}
+			else if (holder >= 203 && holder <= 248)
+			{
+				nw = true;
+			}
+			else if (holder >= 249 && holder <= 292)
+			{
+				w = true;
+			}
+			else if (holder >= 293 && holder <= 337)
+			{
+				sw = true;
+			}
+			else
+			{
+				s = true;
 			}
 		}
+
 	}
 	for (int i = 0; i < m_sprites.size(); i++)
 	{

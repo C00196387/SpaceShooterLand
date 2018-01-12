@@ -98,7 +98,7 @@ public:
 				break;
 			}
 		}
-		return 0;
+		return m_graph.at(0);
 	}
 
 	std::vector<Node> Path(int x, int y, int x2, int y2)//X + Y = Starting position, X2+Y2 = End position
@@ -131,7 +131,7 @@ public:
 			m_graph.at(i)->marked = false;
 			m_graph.at(i)->weight = 9999999;
 			m_graph.at(i)->heuristic = sqrt(((dest->x - m_graph.at(i)->x)*(dest->x - m_graph.at(i)->x)) + ((dest->y - m_graph.at(i)->y)*(dest->y - m_graph.at(i)->y)));
-			m_graph.at(i)->previous = NULL;
+			m_graph.at(i)->previous = m_graph.at(0);
 		}
 
 		dest->weight = 0;
@@ -161,7 +161,7 @@ public:
 						neighbours.front()->previous = pq.top();
 						if (neighbours.front() == dest)
 						{
-							complete = true;
+							//complete = true;
 						}
 					}
 					if (!neighbours.front()->marked)
@@ -182,7 +182,7 @@ public:
 
 		std::cout << "Path is (" << holder.back().x << "," << holder.back().y << ")";
 
-		while (holder.back().previous != NULL)
+		while (holder.back().previous != m_graph.at(0))
 		{
 			holder.push_back(*holder.back().previous);
 			std::cout << ", (" << holder.back().x << "," << holder.back().y << ")";
@@ -194,15 +194,24 @@ public:
 
 	}
 
+
 private:
 
 	class SearchCostComparer {
 	public:
 		bool operator()(Node * n1, Node * n2) 
 		{
-			int p1 = n1->weight;
-			int p2 = n2->weight;
-			return p1 + n1->heuristic > p2 + n2->heuristic;
+			try
+			{
+				int p1 = n1->weight;
+				int p2 = n2->weight;
+				return p1 + n1->heuristic > p2 + n2->heuristic;
+			}
+			catch(...)
+			{
+				return 0;
+			}
+
 		}
 	};
 

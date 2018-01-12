@@ -14,6 +14,7 @@
 #include "Nest.h"
 #include "Radar.h"
 #include "Block.h"
+#include "Sweeper.h"
 
 int main()
 {
@@ -56,6 +57,7 @@ int main()
 	std::vector<Entity*> * entity = new std::vector<Entity*>();
 
 	Explosion * explosion = new Explosion(&Resources, entity);
+	explosion->m_position = sf::Vector2f(-1000, -1000);
 
 
 	std::vector<ManagedSprite*> spaceTiles;
@@ -89,11 +91,11 @@ int main()
 	{ {"W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W",},
 	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
 	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
-	{ "W","S","S","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","S","S","W", },
-	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
-	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
-	{ "W","S","S","X","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","X","S","S","W", },
-	{ "W","S","S","X","F","F","X","X","X","X","X","X","X","X","X","X","X","X","F","F","X","X","S","S","W", },
+	{ "W","S","S","F","F","F","F","F","X","X","X","X","X","X","X","X","X","X","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","X","F","F","X","X","X","X","X","X","X","X","X","X","X","X","F","F","X","F","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","F","F","F","F","F","X","F","F","F","F","X","S","S","W", },
@@ -102,12 +104,12 @@ int main()
 	{ "W","S","S","F","F","F","X","F","F","F","F","X","F","F","F","F","X","F","F","F","F","X","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","X","F","F","F","F","X","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","X","X","X","X","X","X","S","S","W", },
-	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
-	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
-	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","X","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
 	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
-	{ "W","S","S","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","S","S","W", },
+	{ "W","S","S","X","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","X","F","F","F","F","X","F","F","F","F","F","F","F","F","F","F","S","S","W", },
+	{ "W","S","S","F","F","F","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","S","S","W", },
 	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
 	{ "W","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","S","W", },
 	{ "W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W","W", } };
@@ -161,17 +163,29 @@ int main()
 
 	solidMap->GenerateGraph();
 
-	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, 140, 64));
+	entity->push_back(new Player(&Resources, entity, explosion, mainCamera, -1000, -1000));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 4 * 32, 4 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 8 * 32, 10 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 12 * 32, 8 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 16 * 32, 20 * 32));
 	entity->push_back(new Nest(&Resources, entity, explosion, solidMap, 5 * 32, 20 * 32));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
-	//entity->push_back(new Nest(&Resources, entity, explosion, solidMap, xHolder, yHolder));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 9 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 5 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 4 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 2 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 6 * 32, 23 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 7 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 8 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 9 * 32, 1 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 10 * 32, 2 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 11 * 32, 6 * 32));
+	entity->push_back(new Worker(&Resources, entity, solidMap, 12 * 32, 2 * 32));
+	entity->push_back(new Sweeper(&Resources, entity, explosion, solidMap, 5 * 32, 10 * 32));
 
 	Radar radar(&Resources, entity, 300-32,0);
+
+	solidMap->Path(0, 0, 10, 10);
+	entity->at(0)->m_position = sf::Vector2f(75, 75);
 
 	//FPS stuff
 	sf::Clock clock;
