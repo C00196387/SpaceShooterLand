@@ -1,5 +1,4 @@
 #include "Space.h"
-
 Space::Space(std::vector<ManagedSprite*>* sprite, int x, int y)
 {
 	m_spaceTile = rand() % 3;

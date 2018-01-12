@@ -1,7 +1,5 @@
 #include "Predator.h"
 
-
-
 Predator::Predator(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, Graph * g, int x, int y)
 {
 	m_position.x = x;
@@ -85,7 +83,7 @@ void Predator::Update(sf::Time t)
 			m_pathRenewTimer--;
 		}
 
-		//Formation Code
+		//!Formation Code
 		int playerIndex = -1;
 		bool attackPlayer = false;
 		for (int i = 0; i < m_entity->size(); i++)
@@ -238,7 +236,6 @@ void Predator::Draw(sf::RenderWindow & r)
 		m_explosion->Draw(r);
 	}
 }
-
 void Predator::Pursue(sf::Vector2f otherLoc, sf::Time t)
 {
 	float timetotarget = 0.05;

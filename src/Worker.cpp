@@ -1,7 +1,8 @@
 #include "Worker.h"
 
 
-
+//!worker class
+/*! worker that uses wnader behavior and gets picked up by sweeper or player*/
 Worker::Worker(ResourceManager * r, std::vector<Entity*> * e, Graph * g, int x, int y)
 {
 	m_position.x = x;
@@ -76,7 +77,9 @@ void Worker::Draw(sf::RenderWindow & r)
 	m_sprite.GetSprite()->setRotation(m_orientation);
 	r.draw(*m_sprite.GetSprite());
 }
-
+//! seekwander
+/*! \fn seekAndWander()
+uses something similar to seek to generate a path and then goes to through that path and chooses a new path and keeps doing this to make it look like it is randomly chooses directions to go in*/
 void Worker::seekAndWander(sf::Vector2f otherLoc, sf::Time t)
 {
 	float timetotarget = 0.05;

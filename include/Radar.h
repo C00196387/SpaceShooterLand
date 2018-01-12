@@ -4,7 +4,8 @@
 #include "ResourceManager.h"
 #include "Entity.h"
 #include "stdafx.h"
-
+//!Radar
+/*! tracks all workers and tells you the direction of each one so you can find them in the world and pick them up*/
 class Radar
 {
 public:

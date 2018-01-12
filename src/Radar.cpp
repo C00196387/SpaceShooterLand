@@ -1,7 +1,5 @@
 #include "Radar.h"
 
-
-
 Radar::Radar(ResourceManager * r, std::vector<Entity*> * e, int x, int y)
 {
 	m_sprites.push_back(ManagedSprite(r->GetTexture("radar"), 16, 16));

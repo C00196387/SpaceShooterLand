@@ -14,7 +14,7 @@ Explosion::Explosion(ResourceManager * r, std::vector<Entity*> * e)
 	m_sprite.GetSprite()->setOrigin(8, 8);
 	m_sprite.AnimateOn();
 
-	m_type = "Explosion";
+	m_type = "Explosion";/*!<Type Explosion to ID*/
 
 	m_alive = true;
 }

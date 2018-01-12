@@ -2,7 +2,8 @@
 #define MANAGEDSPRITE_H
 
 #include "stdafx.h"
-
+//! maneged sprite class
+/*! manages all sprites from the resource manager also deals with the animation of the sprites*/
 class ManagedSprite
 {
 public:

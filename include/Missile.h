@@ -3,7 +3,8 @@
 
 #include "Entity.h"
 #include "Explosion.h"
-
+//!Missile Class
+/*! Deals with firing the homing missiles that use seek to follow the player and can only be used by the nests that spawn predators*/
 class Missile : public Entity
 {
 public:
@@ -28,7 +29,8 @@ private:
 	int m_timer;
 	float m_rotation;
 	float m_speed;
-
+	//!seek function
+	/*! function that is similar to predator as it follows the player until it collides with the player*/
 	void Seek(sf::Vector2f otherLoc, sf::Time t);
 
 	float GetMagnitude(sf::Vector2f v)

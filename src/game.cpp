@@ -13,7 +13,8 @@
 #include "Missile.h"
 #include "Nest.h"
 #include "Radar.h"
-
+//! main cpp
+/*! deals with the game loop and sfml windows loads all the textures and creates the astar grid with nodes*/
 int main()
 {
 	sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(600, 600), "SFML works!");

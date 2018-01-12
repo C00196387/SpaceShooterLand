@@ -1,0 +1,4 @@
+<map id="Entity" name="Entity">
+<area shape="rect" id="node2" href="$class_managed_sprite.html" title="maneged sprite class " alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node3" href="$class_resource_manager.html" title="Resource manager class. " alt="" coords="139,5,266,32"/>
+</map>

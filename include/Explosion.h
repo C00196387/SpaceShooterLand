@@ -2,6 +2,8 @@
 #define EXPLOSION_H
 
 #include "Entity.h"
+//!Explosion class
+/*! explosion class deals with any entity that needs to have an explosion after getting to health '0' */
 class Explosion :
 	public Entity
 {

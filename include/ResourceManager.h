@@ -2,7 +2,8 @@
 #define RESOURCEMANAGER_H
 
 #include "stdafx.h"
-
+//!Resource manager class
+/*! deals with loading in the resources and assets and putting them into a vector*/
 class ResourceManager
 {
 public:

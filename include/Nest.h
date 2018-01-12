@@ -6,7 +6,8 @@
 #include "Missile.h"
 
 
-
+//!Nest Class
+/*! Nest class spawns the predators when there is not enough predators and also fires guided missiles while the player is in range*/
 class Nest : public Entity
 {
 public:

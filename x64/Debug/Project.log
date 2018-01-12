@@ -1,9 +1,123 @@
-﻿  game.cpp
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
-c:\users\pixir\desktop\college stuff\ai\spaceshooter\src\game.cpp(28): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.exe
-  Project.vcxproj -> C:\Users\pixir\Desktop\College Stuff\AI\SpaceShooter\x64\Debug\Project.pdb (Partial PDB)
+﻿  Worker.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(67): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\worker.cpp(82): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Space.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\space.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\space.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Radar.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\radar.cpp(22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\radar.cpp(23): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\radar.cpp(57): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Predator.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(112): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(125): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(130): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(138): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(148): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(155): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(165): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(174): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(175): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(179): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(180): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(202): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\predator.cpp(244): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Player.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\player.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\player.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\player.cpp(41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\player.cpp(42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\player.cpp(107): warning C4305: '*=': truncation from 'double' to 'float'
+  Nest.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\nest.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\nest.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\nest.cpp(72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Missile.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(113): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\missile.cpp(114): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ManagedSprite.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\managedsprite.cpp(7): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\managedsprite.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  game.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\game.cpp(28): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Explosion.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Cannon.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\cannon.h(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\cannon.cpp(82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Bullet.cpp
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(149): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\graph.h(122): warning C4101: 'pTemp': unreferenced local variable
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\include\managedsprite.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(7): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(108): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jocon\desktop\aispaceshooter\spaceshooterland\src\bullet.cpp(109): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  LINK : C:\Users\jocon\Desktop\AISpaceShooter\SpaceShooterLand\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
+  Project.vcxproj -> C:\Users\jocon\Desktop\AISpaceShooter\SpaceShooterLand\x64\Debug\Project.exe
+  Project.vcxproj -> C:\Users\jocon\Desktop\AISpaceShooter\SpaceShooterLand\x64\Debug\Project.pdb (Partial PDB)

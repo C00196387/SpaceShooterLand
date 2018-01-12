@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, sf::View * cam, int x, int y)
 {
 	m_position.x = x;
@@ -59,7 +57,6 @@ void Player::Draw(sf::RenderWindow & r)
 	r.draw(*m_sprite.GetSprite());
 	m_cannon->Draw(r);
 }
-
 void Player::Controls()
 {
 	bool isAccelerateOn = false;

@@ -25,10 +25,10 @@ Bullet::Bullet(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 
 	m_explosion = explosion;
 
-	m_type = "Bullet";
+	m_type = "Bullet"; 
 	m_rotation = 0;
 	m_alive = false;
-	m_health = 1;
+	m_health = 1; 
 }
 
 void Bullet::Update(sf::Time t)

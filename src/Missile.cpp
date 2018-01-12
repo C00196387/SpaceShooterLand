@@ -1,7 +1,5 @@
 #include "Missile.h"
 
-
-
 Missile::Missile(ResourceManager * r, std::vector<Entity*> * e, Explosion * explosion, int x, int y)
 {
 	m_position.x = x;
@@ -26,7 +24,7 @@ Missile::Missile(ResourceManager * r, std::vector<Entity*> * e, Explosion * expl
 
 	m_explosion = explosion;
 
-	m_type = "Missile";
+	m_type = "Missile";/*!<type Missile to ID*/
 	m_rotation = 0;
 	m_alive = false;
 	m_health = 1;
@@ -116,7 +114,6 @@ void Missile::Fire(int x, int y)
 	m_timer = 600;
 	m_health = 1;
 }
-
 void Missile::Seek(sf::Vector2f otherLoc, sf::Time t)
 {
 	sf::Vector2f m_linear = otherLoc - m_position;

@@ -16,7 +16,8 @@ Cannon::Cannon(ResourceManager * r, std::vector<Entity*> * e, Explosion * explos
 	m_sprite.GetSprite()->setOrigin(8, 8);
 
 	m_source = source;
-
+	//! for loop for the bullets in a vector
+	/*! pushes 50 bullet objects to a vector to use at once and each bullet is recycled*/
 	for (int i = 0; i < 50; i++)
 	{
 		m_bullets.push_back(Bullet(r, e, explosion, m_position.x, m_position.y, source));
@@ -46,6 +47,7 @@ void Cannon::Update(sf::Time t)
 	{
 		m_fireTimer--;
 	}
+
 	if (m_source == "Player")
 	{
 		m_dx = m_mouse.x - (m_position.x);

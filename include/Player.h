@@ -5,7 +5,8 @@
 #include "Bullet.h"
 #include "Cannon.h"
 #include "Explosion.h"
-
+//!Player class
+/*!Class that controls the player(user) using key inputs like w,a,s,d*/
 class Player : public Entity
 {
 public:
@@ -20,7 +21,8 @@ public:
 	int Health() { return m_health; };
 
 private:
-
+	//!Control function
+	/*! this is the sfml keyboard logic to input when playing the game this controls the player ship*/
 	void Controls();
 
 	sf::View * m_camera;

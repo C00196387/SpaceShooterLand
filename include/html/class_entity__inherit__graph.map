@@ -1,0 +1,9 @@
+<map id="Entity" name="Entity">
+<area shape="rect" id="node2" href="$class_bullet.html" title="Bullet" alt="" coords="5,80,60,107"/>
+<area shape="rect" id="node3" href="$class_explosion.html" title="Explosion class. " alt="" coords="84,80,163,107"/>
+<area shape="rect" id="node4" href="$class_missile.html" title="Missile Class. " alt="" coords="187,80,249,107"/>
+<area shape="rect" id="node5" href="$class_nest.html" title="Nest Class. " alt="" coords="273,80,323,107"/>
+<area shape="rect" id="node6" href="$class_player.html" title="Player class. " alt="" coords="347,80,406,107"/>
+<area shape="rect" id="node7" href="$class_predator.html" title="predator class " alt="" coords="431,80,501,107"/>
+<area shape="rect" id="node8" href="$class_worker.html" title="worker class " alt="" coords="526,80,590,107"/>
+</map>
